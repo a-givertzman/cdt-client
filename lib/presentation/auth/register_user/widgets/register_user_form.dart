@@ -1,3 +1,4 @@
+import 'package:cdt_client/domain/auth/register_user.dart';
 import 'package:cdt_client/presentation/core/widgets/in_pogress_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core.dart';
