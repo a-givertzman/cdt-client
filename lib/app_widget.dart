@@ -4,22 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_json.dart';
 import 'package:hmi_core/hmi_core_text_file.dart';
 import 'package:hmi_networking/hmi_networking.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 import 'package:window_manager/window_manager.dart';
 
 ///
 /// Application entry point widget
 class AppWidget extends StatefulWidget {
+  final AppThemeSwitch? themeSwitch;
   ///
   /// Application entry point widget
   const AppWidget({
     super.key,
+    this.themeSwitch,
   });
   //
   @override
   State<AppWidget> createState() => _AppWidgetState();
 }
-
-///
+//
 class _AppWidgetState extends State<AppWidget> {
   //
   @override
@@ -42,6 +44,7 @@ class _AppWidgetState extends State<AppWidget> {
   //
   @override
   void dispose() {
+    widget.themeSwitch?.dispose();
     super.dispose();
   }
   ///
@@ -79,7 +82,7 @@ class _AppWidgetState extends State<AppWidget> {
           ),
         ),
       },
-      theme: _themeSwitch.themeData,
+      theme: widget.themeSwitch?.themeData,
     );
   }
 }
