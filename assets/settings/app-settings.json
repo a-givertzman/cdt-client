@@ -1,0 +1,20 @@
+{
+    "passwordKey": "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЁЯЧСМИТЬБЮйцукенгшщзхъфывапролджэёячсмитьбю",
+    "connectionStatusMenuWidth": 230,
+    "connectionStatusMenuItemHeight": 50,
+    
+    "api-host": "127.0.0.1",
+    "api-port": 8080,
+    "api-auth-token": "cma-ysz-api-auth-token",
+    "api-database": "crane_data_server",
+
+    "jds-app-name": "App",
+    "jds-service-name": "Jds",
+    "jds-host": "127.0.0.1",
+    "jds-port": 16688,
+    "jds-package-timeout": 1000,
+    "jds-connection-timeout": 3000,
+
+    "comment": "db / stdout",
+    "report": "db"
+}

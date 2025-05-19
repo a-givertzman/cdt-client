@@ -1,0 +1,38 @@
+{
+    "guest": {
+        "id": 0,
+        "name": "Guest",
+        "pass": "guest",
+        "group": ["guest"]
+    },
+    "admin": {
+        "id": 1,
+        "name": "Admin",
+        "pass": "3201,3202,3203,3265,3271,3253",
+        "group": ["admin"]
+    },
+    "operator1": {
+        "id": 2,
+        "name": "Operator1",
+        "pass": "3201,3202,3203,3265,3271,3253",
+        "group": ["operator"]
+    },
+    "operator2": {
+        "id": 3,
+        "name": "Operator2",
+        "pass": "3201,3202,3203,3265,3271,3253",
+        "group": ["operator"]
+    },
+    "operator3": {
+        "id": 4,
+        "name": "Operator3",
+        "pass": "3201,3202,3203,3265,3271,3253",
+        "group": ["operator"]
+    },
+    "engineer_ogp": {
+        "id": 5,
+        "name": "EngineerOGP",
+        "pass": "3201,3202,3203,3265,3271,3253",
+        "group": ["engineerOGP"]
+    }
+}
