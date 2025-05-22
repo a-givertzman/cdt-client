@@ -1,1 +1,1 @@
-Bc - Bridge crane
+Sgoc - Single Girder Overhead Crane
