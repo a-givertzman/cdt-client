@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 ///
 /// Implementation of navigation button on the menu page
-/// 
-/// [caption] - text on menu button (name of the page thats button leads to)
-/// [routeBuilder] - route to a page navigation
 class MenuNavigationButton extends StatelessWidget {
   final String caption;
   final PageRoute Function()? routeBuilder;
   final ButtonStyle? style;
   final TextStyle? textStyle;
-  //
+  /// 
+  /// Requires all parametrs to build button
+  /// that menu uses for navigation to other pages
+  /// 
+  /// [caption] - text on menu button (name of the page thats button leads to)
+  /// [routeBuilder] - route to a page navigation
   const MenuNavigationButton({
     super.key, 
     this.caption = '', 

@@ -13,7 +13,12 @@ class MenuBody extends StatelessWidget {
   static const _log = Log('MenuBody');
   final AppUserStacked _users;
   //final AppThemeSwitch _themeSwitch;
-  //
+  ///
+  /// Requires user to display the
+  /// necessary information for each user
+  /// on the pages that menu navigates to.
+  ///
+  /// [users] - list of all stored useres
   const MenuBody({
     Key? key,
     required AppUserStacked users,

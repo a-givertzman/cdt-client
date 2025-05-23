@@ -2,16 +2,18 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 ///
 /// Grid for placing elements on the menu page
-/// 
-/// [children] - widgets that will be displayed in the grid
-/// [cellFillament] - widget for empty cell in the row
 class MenuGrid extends StatelessWidget {
   final int itemsPerRow;
   final double horizontalSpacing;
   final double verticalSpacing;
   final List<Widget> children;
   final Widget cellFillament;
-  //
+  /// 
+  /// Requires all the parametrs to build grid for 
+  /// placing elements in it
+  /// 
+  /// [children] - widgets that will be displayed in the grid
+  /// [cellFillament] - widget for empty cell in the row
   const MenuGrid({
     super.key,
     this.itemsPerRow = 2,

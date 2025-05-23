@@ -7,7 +7,10 @@ import 'package:hmi_networking/hmi_networking.dart';
 /// Builds menu page using current user 
 class MenuPage extends StatelessWidget {
   final AppUserStacked users;
-  //
+  ///
+  /// Requires users to build the [MenuBody].
+  ///
+  /// [users] - list of all stored users
   const MenuPage({
     super.key,
     required this.users,
