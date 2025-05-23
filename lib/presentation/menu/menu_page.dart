@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
-
 ///
-/// TODO
+/// Builds menu page using current user 
 class MenuPage extends StatelessWidget {
   final AppUserStacked users;
   ///
-  /// TODO
+  /// Requires users to build the [MenuBody].
+  ///
+  /// [users] - list of all stored users
   const MenuPage({
     super.key,
     required this.users,
