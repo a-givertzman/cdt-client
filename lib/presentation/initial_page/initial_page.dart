@@ -5,14 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 ///
-/// Page for initialization params of Single Girder Overhead Crane
-/// 
-/// [users] - list of all stored users
-/// [values] - parametrs for initialization Single Girder Overhead Crane
+/// Page for initialization params of the crane
 class InitialPage extends StatefulWidget {
   final AppUserStacked users;
   final SgocInit values;
-  //
+  /// 
+  /// Requires list of users and current data of the crane 
+  /// 
+  /// [users] - list of all stored users
+  /// [values] - parametrs for initialization 
   const InitialPage({
     super.key,
     required this.users,

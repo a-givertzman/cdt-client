@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
-/// Widget that implements switching between pages and bottom indication
+/// Widget that implements switching between pages with bottom indication
 class PagesSwitch extends StatefulWidget {
   //
   const PagesSwitch({

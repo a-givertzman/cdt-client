@@ -3,15 +3,19 @@ import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
 /// The body widget of the [InitialPage]
-/// 
-/// [form] - current form
-/// [pageData] - content of all forms
-/// [users] - all stored users
 class InitialBody extends StatelessWidget {
   //final Pages form;
   //final Map<Pages, Map> pageData;
   final AppUserStacked users;
-  //
+  /// 
+  /// Requires the form of current page,
+  /// content of all pages to acess necessary data
+  /// and current user to display the content that
+  /// he needs.
+  /// 
+  /// [form] - current form
+  /// [pageData] - content of all forms
+  /// [users] - all stored users
   const InitialBody({
     super.key,
     //required this.form,
