@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
-/// Widget that implements switching between pages with bottom indication
+/// Widget that implements switching between 
+/// pages with bottom indication. Switching 
+/// is using enum with indexes of pages to switch.
+/// Bottom indication is circle buttons, their number
+/// is equel to the number of pages.
 class PagesSwitch extends StatefulWidget {
-  //
+  ///
+  /// Widget that implements switching between pages.
   const PagesSwitch({
     super.key,
   });
@@ -11,10 +16,7 @@ class PagesSwitch extends StatefulWidget {
   @override
   State<PagesSwitch> createState() => _PagesSwitchState();
 }
-/// 
-/// [_slideDuration] - time of page slide
-/// [_pages] - list that contains all forms indexes
-/// [_pageData] - content of all forms
+//
 class _PagesSwitchState extends State<PagesSwitch> {
   static const _slideDuration = Duration(milliseconds: 300);
   static const List<Pages> _pages = [Pages.first, Pages.second, Pages.third];

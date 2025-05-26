@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
-/// The body widget of the [InitialPage]
+/// The body widget of the [InitialPage].
+/// Builds the body on the base of form of the 
+/// current page,content of all pages to access 
+/// necessary data and current user to display 
+/// the content that he needs.
 class InitialBody extends StatelessWidget {
   //final Pages form;
   //final Map<Pages, Map> pageData;
   final AppUserStacked users;
   /// 
-  /// Requires the form of current page,
-  /// content of all pages to acess necessary data
-  /// and current user to display the content that
-  /// he needs.
+  /// The body of the [InitialPage] widget.
   /// 
   /// [form] - current form
   /// [pageData] - content of all forms

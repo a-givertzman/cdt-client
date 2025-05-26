@@ -1,6 +1,5 @@
 ///
-/// Enum of forms indexes which are presented
-/// in the form of String
+/// Enum that contains indexes of forms.
 enum Pages { first, second, third }
 //
 extension PageOperators on Pages {
