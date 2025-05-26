@@ -4,7 +4,7 @@ import 'package:hmi_core/hmi_core_log.dart';
 
 import 'message.dart';
 ///
-/// Provides information of the device.
+/// Provides event based messaging with the backend.
 class EventStream {
   final _log = const Log("EventStream");
   final Message _message;

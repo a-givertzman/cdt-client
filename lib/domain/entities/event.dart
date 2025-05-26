@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:cdt_client/domain/entities/cot.dart';
 import 'package:cdt_client/domain/entities/event_kind.dart';
