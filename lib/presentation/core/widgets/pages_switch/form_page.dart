@@ -1,5 +1,6 @@
 ///
-/// Enum that contains indexes of forms.
+/// Enum that contains indexes of Pages of the `PageView`.
+/// Used for counting the pages and switching between.
 enum Pages { first, second, third }
 //
 extension PageOperators on Pages {
