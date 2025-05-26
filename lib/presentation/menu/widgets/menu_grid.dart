@@ -1,7 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 ///
-/// Grid for placing elements on the menu page
+/// Grid for placing buttons on menu page.
+/// Consist of several rows. Their number is calculated 
+/// automatically relative to the screen size.
+/// Fills empty elements in the row with empty sizedbox.
 class MenuGrid extends StatelessWidget {
   final int itemsPerRow;
   final double horizontalSpacing;
@@ -9,8 +12,7 @@ class MenuGrid extends StatelessWidget {
   final List<Widget> children;
   final Widget cellFillament;
   /// 
-  /// Requires all the parametrs to build grid for 
-  /// placing elements in it
+  /// Grid for placing buttons on the menu page.
   /// 
   /// [children] - widgets that will be displayed in the grid
   /// [cellFillament] - widget for empty cell in the row
@@ -61,12 +63,7 @@ class MenuGrid extends StatelessWidget {
     );
   }
 }
-///
-/// Fills empty elements in the row with [_fillament]
-/// 
-/// [_targetLength] - number of elements thats should be fills
-/// [_fillament] - widget for empty cell in the row (required [cellFillament])
-/// [_items] - original number of elemnets 
+//
 class _PaddedIterable<T> {
   final int _targetLength;
   final T _fillament;
@@ -81,8 +78,7 @@ class _PaddedIterable<T> {
     _fillament = fillament, 
     _items = items,
     assert(items.length <= targetLength);
-  ///
-  /// Check for empty elements
+  //
   Iterable<T> get items => _items.length == _targetLength 
     ? _items
     : [

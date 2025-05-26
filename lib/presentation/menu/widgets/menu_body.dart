@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:hmi_core/hmi_core.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
-import 'package:cdt_client/presentation/core/theme/app_theme_switch.dart';
 import 'package:cdt_client/presentation/menu/widgets/menu_grid.dart';
 import 'package:cdt_client/presentation/menu/widgets/menu_navigation_button.dart';
 import 'package:cdt_client/presentation/home_page/home_page.dart';
 ///
-/// Builds menu body using current user
+/// Builds menu body using current user.
+/// Menu body is a grid that contains
+/// buttons thats navigates to different
+/// pages of this app.
 class MenuBody extends StatelessWidget {
   static const _log = Log('MenuBody');
   final AppUserStacked _users;
   //final AppThemeSwitch _themeSwitch;
   ///
-  /// Requires user to display the
-  /// necessary information for each user
-  /// on the pages that menu navigates to.
+  /// Builds menu body using current user.
   ///
   /// [users] - list of all stored useres
   const MenuBody({
@@ -32,7 +32,7 @@ class MenuBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _log.debug('[.build]');
-    final user = _users.peek;
+    //final user = _users.peek;
     final blockPadding = const Setting('blockPadding').toDouble;
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
