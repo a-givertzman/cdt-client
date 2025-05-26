@@ -1,5 +1,4 @@
 import 'package:cdt_client/presentation/auth/sign_in/sign_in_page.dart';
-import 'package:cdt_client/presentation/home_page/widgets/home_body.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_json.dart';
 import 'package:hmi_core/hmi_core_text_file.dart';
@@ -48,11 +47,11 @@ class _AppWidgetState extends State<AppWidget> {
     super.dispose();
   }
   ///
-  void _themeSwitchListener() {
-    if (mounted) {
-      setState(() {true;});
-    }
-  }
+  // void _themeSwitchListener() {
+  //   if (mounted) {
+  //     setState(() {true;});
+  //   }
+  // }
   //
   @override
   Widget build(BuildContext context) {

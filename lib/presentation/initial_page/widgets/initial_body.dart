@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hmi_networking/hmi_networking.dart';
-import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
 /// [InitialPage] body widget.
 /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).

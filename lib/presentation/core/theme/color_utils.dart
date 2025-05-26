@@ -14,8 +14,8 @@ Color colorShiftLightness(Color color, double factor) {
 
 ///
 Color colorInvert(Color color) {
-  final r = 255 - color.red;
-  final g = 255 - color.green;
-  final b = 255 - color.blue;
-  return Color.fromARGB((color.opacity * 255).round(), r, g, b);
+  final r = 255 - color.r;
+  final g = 255 - color.g;
+  final b = 255 - color.b;
+  return Color.fromARGB((color.a * 255).round(), r.round(), g.round(), b.round());
 }
