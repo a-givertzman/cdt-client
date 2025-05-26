@@ -3,7 +3,7 @@ import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 ///
 /// [InitialPage] body widget.
-/// The form provides view / edit of initial data.
+/// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).
 /// Access to edit may be restricted depends on user priveleges.
 class InitialBody extends StatelessWidget {
   // final Pages form;
