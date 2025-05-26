@@ -1,4 +1,4 @@
-import 'package:cdt_client/domain/core/timers/count_timer.dart';
+import 'package:cdt_client/domain/timers/count_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
@@ -11,13 +11,12 @@ class UserPassPage extends StatefulWidget {
   final Authenticate _auth;
   ///
   const UserPassPage({
-    Key? key,
+    super.key,
     required UserLogin userLogin,
     required Authenticate auth,
   }) :
     _userLogin = userLogin,
-    _auth = auth,
-    super(key: key);
+    _auth = auth;
   UserLogin get userLogin => _userLogin;
   //
   @override
