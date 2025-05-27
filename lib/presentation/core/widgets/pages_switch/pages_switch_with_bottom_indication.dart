@@ -1,5 +1,7 @@
+import 'package:cdt_client/presentation/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
+import 'package:hmi_networking/hmi_networking.dart';
 ///
 /// Widget that implements switching between 
 /// pages with bottom indication. Switching 
@@ -7,11 +9,20 @@ import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart
 /// Bottom indication is circle buttons, their number
 /// is equel to the number of pages.
 class PagesSwitch extends StatefulWidget {
+  final AppUserStacked _users;
+  //final AppThemeSwitch _themeSwitch;
   ///
   /// Widget that implements switching between pages.
+  ///
+  /// [users] - list of all stored useres
   const PagesSwitch({
-    super.key,
-  });
+    Key? key,
+    required AppUserStacked users,
+    //required AppThemeSwitch themeSwitch,
+  }):
+  _users = users,
+  //_themeSwitch = themeSwitch,
+  super(key: key);
   //
   @override
   State<PagesSwitch> createState() => _PagesSwitchState();
@@ -22,8 +33,8 @@ class _PagesSwitchState extends State<PagesSwitch> {
   static const List<Pages> _pages = [Pages.first, Pages.second, Pages.third];
   late final PageController _pageController;
   Pages _currentPage = Pages.first;
-  //
   final Map<Pages, Map> _pageData = { for (var k in _pages) k : {} };
+  bool _isCurrentFormValid = false;
   //
   @override
   void initState() {
@@ -52,24 +63,29 @@ class _PagesSwitchState extends State<PagesSwitch> {
   ///
   /// Creating all forms on the base of their index
   Widget _createFormByIndex(Pages form) {
-    return const Placeholder(child: Text('Implementation of pages switch.'));
-    // switch(form) {
-    //   case FormPage.first:
-    //     return Page1(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    //   case FormPage.second:
-    //     return Page2(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    //   case FormPage.third:
-    //     return Page3(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    // }
+    switch(form) {
+      case Pages.first:
+        return InitialPage(
+          form: form,
+          users: widget._users,
+          //pageData: _pageData,
+          onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
+        );
+      case Pages.second:
+        return InitialPage(
+          form: form,
+          users: widget._users,
+          //pageData: _pageData,
+          onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
+        );
+      case Pages.third:
+        return InitialPage(
+          form: form,
+          users: widget._users,
+          //pageData: _pageData,
+          onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
+        );
+    }
   }
   ///
   /// Implementation of bottom indication
@@ -105,7 +121,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
           // cheak if the page is last for next or submit button placement
           if (_currentPage != _pages.last)
             ElevatedButton(
-              onPressed: () => _slideFwd(),
+              onPressed: _isCurrentFormValid ? _slideFwd : null,
               child: const Text('Далее'),
             )
           else
@@ -154,5 +170,14 @@ class _PagesSwitchState extends State<PagesSwitch> {
         ],
       ),
     );
+  }
+  ///
+  /// Form validity update
+  void _updateFormValidity(Pages form, bool isValid) {
+    if (form == _currentPage) {
+      setState(() {
+        _isCurrentFormValid = isValid;
+      });
+    }
   }
 }
