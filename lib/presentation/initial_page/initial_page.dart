@@ -11,6 +11,7 @@ import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart
 class InitialPage extends StatefulWidget {
   final AppUserStacked users;
   final Pages form;
+  final Map<String, dynamic> data;
   //final SgocInit values;
   final Function(bool isValid)? onValidationChanged;
   /// 
@@ -18,12 +19,14 @@ class InitialPage extends StatefulWidget {
   /// 
   /// [users] - list of all stored users
   /// [form] - current form
+  /// [data] - temprorary example of InitialPage content
   /// [values] - parametrs for initialization 
   /// [onValidationChanged] - callback for checking is form valid 
   const InitialPage({
     super.key,
     required this.users,
     required this.form,
+    required this.data,
     //required this.values,
     required this.onValidationChanged,
   });
@@ -51,6 +54,7 @@ class _InitialPageState extends State<InitialPage> {
       body: InitialBody(
         users: widget.users,
         form: widget.form,
+        data: widget.data,
         onValidationChanged: (isValid) {
           if (widget.onValidationChanged != null) {
             widget.onValidationChanged!(isValid);

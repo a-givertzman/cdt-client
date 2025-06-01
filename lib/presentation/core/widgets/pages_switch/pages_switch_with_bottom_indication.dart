@@ -2,6 +2,7 @@ import 'package:cdt_client/presentation/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 import 'package:hmi_networking/hmi_networking.dart';
+import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 ///
 /// Widget that implements switching between 
 /// pages with bottom indication. Switching 
@@ -16,13 +17,11 @@ class PagesSwitch extends StatefulWidget {
   ///
   /// [users] - list of all stored useres
   const PagesSwitch({
-    Key? key,
+    super.key,
     required AppUserStacked users,
     //required AppThemeSwitch themeSwitch,
   }):
-  _users = users,
-  //_themeSwitch = themeSwitch,
-  super(key: key);
+  _users = users;
   //
   @override
   State<PagesSwitch> createState() => _PagesSwitchState();
@@ -68,6 +67,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
         return InitialPage(
           form: form,
           users: widget._users,
+          data: Data.data,
           //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
@@ -75,6 +75,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
         return InitialPage(
           form: form,
           users: widget._users,
+          data: Data.data,
           //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
@@ -82,6 +83,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
         return InitialPage(
           form: form,
           users: widget._users,
+          data: Data.data,
           //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
@@ -107,7 +109,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
           Row(
             children: _pages.map(
               (page) => IconButton(
-                onPressed: () => _slideToPage(page.index),
+                onPressed: () =>_isCurrentFormValid ? _slideToPage(page.index) : null,
                 icon: const Icon(Icons.circle),
                 color: _currentPage == page
                   ? Theme.of(context).primaryColor
@@ -121,12 +123,20 @@ class _PagesSwitchState extends State<PagesSwitch> {
           // cheak if the page is last for next or submit button placement
           if (_currentPage != _pages.last)
             ElevatedButton(
-              onPressed: _isCurrentFormValid ? _slideFwd : null,
+              onPressed: () {
+                if (_isCurrentFormValid) {
+                  _slideFwd();
+                }
+              }, 
               child: const Text('Далее'),
             )
           else
             ElevatedButton(
-              onPressed: _submitAllForms,
+              onPressed: () {
+                if (_isCurrentFormValid) {
+                _submitAllForms();
+                }
+              },
               child: const Text('Готово'),
             ),
         ],
