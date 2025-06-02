@@ -45,9 +45,9 @@ class _InitialPageState extends State<InitialPage> {
         title: Text('Initialization'.loc),
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-            SystemNavigator.pop();
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -56,9 +56,7 @@ class _InitialPageState extends State<InitialPage> {
         form: widget.form,
         data: widget.data,
         onValidationChanged: (isValid) {
-          if (widget.onValidationChanged != null) {
-            widget.onValidationChanged!(isValid);
-          }
+          widget.onValidationChanged?.call(isValid);
         },
       ),
     );
