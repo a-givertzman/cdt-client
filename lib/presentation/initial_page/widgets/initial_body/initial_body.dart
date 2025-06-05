@@ -2,6 +2,7 @@ import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 // import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
 // import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
@@ -25,14 +26,14 @@ class InitialBody extends StatefulWidget {
   /// [pageData] - content of all forms
   /// [users] - all stored users
   /// [onValidationChanged] - callback for checking is form valid
-  const InitialBody({
+  InitialBody({
     super.key,
     required this.form,
     //required this.pageData,
     required this.users,
     required this.onValidationChanged,
   }):
-    fields = const SgocInit({});
+    fields = SgocInit(sgocInit);
   //
   @override
   State<InitialBody> createState() => _InitialBodyState();
@@ -51,7 +52,35 @@ class _InitialBodyState extends State<InitialBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              HoistPartPage(fields: widget.fields, formValidator: _formValidator),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      HoistPartPage(fields: widget.fields, formValidator: _formValidator),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: Setting('ui-paddingDouble').toDouble),
+              Row(
+                children: [
+                  Column(
+                    children: [
+
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      
+                    ],
+                  ),
+                ],
+              ),
               // TrolleyRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
               // BridgeRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
               // GeneralCraneParametersPartPage(data: widget.fields, formValidator: _formValidator),

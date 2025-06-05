@@ -77,8 +77,8 @@ class _HoistPartPageState extends State<HoistPartPage> {
         ),
         DropDownMenuFormFieldWidget(
           label: 'Тип привода механизма подъёма',
-          value: widget.fields.get('lifting-mechanism-drive-type'),
-          items: widget.fields.get('lifting-mechanism-drive-type')[''],
+          value: widget.fields.getOptionsValue('lifting-mechanism-drive-type'),
+          items: widget.fields.getOptions('lifting-mechanism-drive-type'),
           onChanged: (value) => setState(() => widget.fields.update('lifting-mechanism-drive-type', value)),
           formValidator: widget.formValidator,
         ),

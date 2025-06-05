@@ -29,38 +29,35 @@ class NumberFormFieldWidget extends StatelessWidget{
     // controller = TextEditingController(text: value);
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width * 0.3,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 16.0),
-        child: TextFormField(
-          initialValue: value,
-          decoration: InputDecoration(
-            labelText: label,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 2.0),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 2.0),
-            ),
-            enabledBorder: OutlineInputBorder(),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: TextFormField(
+        initialValue: value,
+        decoration: InputDecoration(
+          labelText: label,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
           ),
-          keyboardType: keyboardType,
-          onChanged: (value) {
-            // if (isInteger) {
-            //   final num = int.tryParse(value);
-            //   if (num != null) onChanged(num);
-            // } else {
-            //   final num = double.tryParse(value);
-            //   if (num != null) onChanged(num);
-            // }
-            formValidator?.call();
-          },
-          validator: (value) => validator?.editFieldValidator(value),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red, width: 2.0),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red, width: 2.0),
+          ),
+          enabledBorder: OutlineInputBorder(),
         ),
+        keyboardType: keyboardType,
+        onChanged: (value) {
+          // if (isInteger) {
+          //   final num = int.tryParse(value);
+          //   if (num != null) onChanged(num);
+          // } else {
+          //   final num = double.tryParse(value);
+          //   if (num != null) onChanged(num);
+          // }
+          formValidator?.call();
+        },
+        validator: (value) => validator?.editFieldValidator(value),
       ),
     );
   }
