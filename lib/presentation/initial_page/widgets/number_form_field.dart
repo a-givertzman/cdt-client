@@ -35,26 +35,19 @@ class NumberFormFieldWidget extends StatelessWidget{
         initialValue: value,
         decoration: InputDecoration(
           labelText: label,
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
-          ),
+          // focusedBorder: OutlineInputBorder(
+          //   borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
+          // ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red, width: 2.0),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2.0),
           ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red, width: 2.0),
-          ),
+          // focusedErrorBorder: OutlineInputBorder(
+          //   borderSide: BorderSide(color: Colors.red, width: 2.0),
+          // ),
           enabledBorder: OutlineInputBorder(),
         ),
         keyboardType: keyboardType,
         onChanged: (value) {
-          // if (isInteger) {
-          //   final num = int.tryParse(value);
-          //   if (num != null) onChanged(num);
-          // } else {
-          //   final num = double.tryParse(value);
-          //   if (num != null) onChanged(num);
-          // }
           formValidator?.call();
         },
         validator: (value) => validator?.editFieldValidator(value),
