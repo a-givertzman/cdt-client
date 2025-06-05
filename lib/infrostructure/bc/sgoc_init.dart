@@ -22,96 +22,97 @@ class SgocInit {
   }
 }
 // temprorary [InitialPage] content
+// Data.dart
 class Data {
-  static Map<String, dynamic> data = {
-  // Hoist parameters
-  "load": 5.0, 
-  "lifting height": 6.0, 
-  "lifting device": "hook block",
-  "lifting device options": const ['hook block', 'electro-hydraulic grab', 'electromagnet'],
-  "rated travelling hoist speed": 8.0, 
-  "slow travelling hoist speed": 1.5, 
-  "hoist group": "M5",
-  "hoist group options": List.generate(8, (index) => 'M${index + 1}'),
-  "lifting duration": "40%",
-  "lifting duration options": const ['15%', '25%', '40%', '60%', '100%'],
-  "hoist control system": "Variable Frequency Drive (VFD)",
-  "hoist control system options": const [
-    'Variable Frequency Drive (VFD)',
-    'Relay-Contactor Control System',
-    'Thyristor-Choke Control System',
-  ],
-  "lifting mechanism drive type": "HD3",
-  "lifting mechanism drive type options": const ['HD1', 'HD2', 'HD3', 'HD4', 'HD5'],
-  "type of lifted load": "safe",
-  "type of lifted load options": const ['safe', 'dangerous'],
-  // Trolley running mechanism
-  "rated travelling trolley speed": 20.0,
-  "slow travelling trolley speed": 5.0,
-  "trolley group": "M4",
-  "trolley group options": List.generate(8, (index) => 'M${index + 1}'),
-  "trolley control system": "Variable Frequency Drive (VFD)",
-  "trolley control system options": const [
-    'Variable Frequency Drive (VFD)',
-    'Relay-Contactor Control System',
-    'Thyristor-Choke Control System',
-  ],
-  "trolley power system": "conductor bar",
-  "trolley power system options": const ['festoon system', 'energy chain', 'conductor bar'],
-  // Bridge running mechanism
-  "rated travelling bridge speed": 32.0,
-  "slow travelling bridge speed": 8.0, 
-  "crane drive group": "M4",
-  "crane drive group options": List.generate(8, (index) => 'M${index + 1}'),
-  "bridge movement duration": "40%",
-  "bridge movement duration options": const ['15%', '25%', '40%', '60%', '100%'],
-  "bridge control system": "Variable Frequency Drive (VFD)",
-  "bridge control system options": const [
-    'Variable Frequency Drive (VFD)',
-    'Relay-Contactor Control System',
-    'Thyristor-Choke Control System',
-  ],
-  "crane power system": "conductor bar",
-  "crane power system options": const ['festoon system', 'cable reel', 'energy chain', 'conductor bar'],
-  "bridge drive type system": "gearmotor",
-  "bridge drive type system options": const ['detailed bridge drive', 'gearmotor'],
-  "bridge drive diagram": "separate drive",
-  "bridge drive diagram options": const ['central drive', 'separate drive'],
-  "bridge control system of synchronous movement": "present",
-  "bridge control system of synchronous movement options": const ['present', 'absent'],
-  "type crane rail": "KR-70",
-  "crane rail length": 50.0,
-  // General crane parameters
-  "crane purpose": "industrial purpose",
-  "crane purpose options": const ['industrial purpose', 'metallurgical purpose', 'special purpose', 'marine purpose'],
-  "explosion-fire-safe crane purpose": "industrial purpose",
-  "explosion-fire-safe crane purpose options": const ['industrial purpose', 'fire-safe purpose', 'explosion-safe purpose'],
-  "marking of fire/explosion hazardous operating environment": "",
-  "duty class": "A5",
-  "duty class options": List.generate(12, (index) => 'A$index'),
-  "climatic design and placement category crane": "У3",
-  "climatic design and placement category crane options": const [
-    'У1', 'У2', 'У3', 'У5', 'ХЛ1', 'ХЛ2', 'ХЛ3', 'УХЛ4', 'УХЛ4.1', 'УХЛ4.2',
-    'О4', 'О4.1', 'О4.2', 'Т5', 'ТС2', 'В3', 'В3.1', 'В4.1', 'ОМ.4', 'В5'
-  ],
-  "crane wind area": "II",
-  "crane wind area options": const ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'морской'],
-  "max use temperature": 40, 
-  "min use temperature": -20,
-  "basic crane control": "pendant control",
-  "basic crane control options": const ['crane cab', 'pendant control', 'remote control', 'cab/remote control'],
-  "cab location": "bridge edge",
-  "cab location options": const ['bridge edge', 'bridge span center', 'crane trolley', 'None value'],
-  "identical hoists volume": 1,
-  "max crane mass": 8.5,
-  "max wheel load": 45.0,
-  // Crane dimensions
-  "span": 10.5,
-  "left edge approach lifting device": 0.3,
-  "right edge approach lifting device": 0.3,
-  "vertical distance from crane rail to lifting device": 0.5, 
-  "maximum vertical distance from the crane rail to the top of the crane": 1.8,
-  "max crane base": 4.2, 
-  "max width crane": 2.1, 
+  static Map<int, dynamic> data = {
+    // Hoist parameters
+    0: 5.0, // load
+    1: 6.0, // lifting height
+    2: "hook block", // lifting device
+    3: const ['hook block', 'electro-hydraulic grab', 'electromagnet'], // lifting device options
+    4: 8.0, // rated travelling hoist speed
+    5: 1.5, // slow travelling hoist speed
+    6: "M5", // hoist group
+    7: List.generate(8, (index) => 'M${index + 1}'), // hoist group options
+    8: "40%", // lifting duration
+    9: const ['15%', '25%', '40%', '60%', '100%'], // lifting duration options
+    10: "Variable Frequency Drive (VFD)", // hoist control system
+    11: const [ // hoist control system options
+      'Variable Frequency Drive (VFD)',
+      'Relay-Contactor Control System',
+      'Thyristor-Choke Control System',
+    ],
+    12: "HD3", // lifting mechanism drive type
+    13: const ['HD1', 'HD2', 'HD3', 'HD4', 'HD5'], // lifting mechanism drive type options
+    14: "safe", // type of lifted load
+    15: const ['safe', 'dangerous'], // type of lifted load options
+    // Trolley running mechanism
+    16: 20.0, // rated travelling trolley speed
+    17: 5.0, // slow travelling trolley speed
+    18: "M4", // trolley group
+    19: List.generate(8, (index) => 'M${index + 1}'), // trolley group options
+    20: "Variable Frequency Drive (VFD)", // trolley control system
+    21: const [ // trolley control system options
+      'Variable Frequency Drive (VFD)',
+      'Relay-Contactor Control System',
+      'Thyristor-Choke Control System',
+    ],
+    22: "conductor bar", // trolley power system
+    23: const ['festoon system', 'energy chain', 'conductor bar'], // trolley power system options
+    // Bridge running mechanism
+    24: 32.0, // rated travelling bridge speed
+    25: 8.0, // slow travelling bridge speed
+    26: "M4", // crane drive group
+    27: List.generate(8, (index) => 'M${index + 1}'), // crane drive group options
+    28: "40%", // bridge movement duration
+    29: const ['15%', '25%', '40%', '60%', '100%'], // bridge movement duration options
+    30: "Variable Frequency Drive (VFD)", // bridge control system
+    31: const [ // bridge control system options
+      'Variable Frequency Drive (VFD)',
+      'Relay-Contactor Control System',
+      'Thyristor-Choke Control System',
+    ],
+    32: "conductor bar", // crane power system
+    33: const ['festoon system', 'cable reel', 'energy chain', 'conductor bar'], // crane power system options
+    34: "gearmotor", // bridge drive type system
+    35: const ['detailed bridge drive', 'gearmotor'], // bridge drive type system options
+    36: "separate drive", // bridge drive diagram
+    37: const ['central drive', 'separate drive'], // bridge drive diagram options
+    38: "present", // bridge control system of synchronous movement
+    39: const ['present', 'absent'], // bridge control system of synchronous movement options
+    40: "KR-70", // type crane rail
+    41: 50.0, // crane rail length
+    // General crane parameters
+    42: "industrial purpose", // crane purpose
+    43: const ['industrial purpose', 'metallurgical purpose', 'special purpose', 'marine purpose'], // crane purpose options
+    44: "industrial purpose", // explosion-fire-safe crane purpose
+    45: const ['industrial purpose', 'fire-safe purpose', 'explosion-safe purpose'], // explosion-fire-safe crane purpose options
+    46: "", // marking of fire/explosion hazardous operating environment
+    47: "A5", // duty class
+    48: List.generate(12, (index) => 'A$index'), // duty class options
+    49: "У3", // climatic design and placement category crane
+    50: const [ // climatic design and placement category crane options
+      'У1', 'У2', 'У3', 'У5', 'ХЛ1', 'ХЛ2', 'ХЛ3', 'УХЛ4', 'УХЛ4.1', 'УХЛ4.2',
+      'О4', 'О4.1', 'О4.2', 'Т5', 'ТС2', 'В3', 'В3.1', 'В4.1', 'ОМ.4', 'В5'
+    ],
+    51: "II", // crane wind area
+    52: const ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'морской'], // crane wind area options
+    53: 40, // max use temperature
+    54: -20, // min use temperature
+    55: "pendant control", // basic crane control
+    56: const ['crane cab', 'pendant control', 'remote control', 'cab/remote control'], // basic crane control options
+    57: "bridge edge", // cab location
+    58: const ['bridge edge', 'bridge span center', 'crane trolley', 'None value'], // cab location options
+    59: 1, // identical hoists volume
+    60: 8.5, // max crane mass
+    61: 45.0, // max wheel load
+    // Crane dimensions
+    62: 10.5, // span
+    63: 0.3, // left edge approach lifting device
+    64: 0.3, // right edge approach lifting device
+    65: 0.5, // vertical distance from crane rail to lifting device
+    66: 1.8, // maximum vertical distance from the crane rail to the top of the crane
+    67: 4.2, // max crane base
+    68: 2.1, // max width crane
   };
 }

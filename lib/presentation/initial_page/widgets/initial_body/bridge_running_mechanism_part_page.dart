@@ -1,0 +1,120 @@
+import 'package:flutter/material.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
+///
+/// Part of [InitialPage] - the bridge running mechanism.
+/// Eleven fields.
+class BridgeRunningMechanismPartPage extends StatefulWidget {
+  //final AppUserStacked users;
+  final Map<int, dynamic> data;
+  final Function() formValidator;
+  ///
+  /// The body of the bridge running mechanism.
+  ///
+  /// [users] - all stored users
+  /// [data] - temprorary example of InitialPage content
+  /// [formValidator] - function for cheking the whole form validity
+  const BridgeRunningMechanismPartPage({
+    super.key,
+    //required this.users,
+    required this.data,
+    required this.formValidator,
+  });
+  @override
+  State<BridgeRunningMechanismPartPage> createState() => _BridgeRunningMechanismPartPageState();
+}
+//
+// BridgeRunningMechanismPartPage.dart
+class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismPartPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Параметры механизма передвижения крана',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 16),
+        NumberFormFieldWidget(
+          label: 'Номинальная скорость передвижения моста, м/мин',
+          value: widget.data[24],
+          onChanged: (value) => setState(() => widget.data[24] = value),
+          formValidator: widget.formValidator,
+          isInteger: false,
+        ),
+        NumberFormFieldWidget(
+          label: 'Замедленная скорость передвижения моста, м/мин',
+          value: widget.data[25],
+          onChanged: (value) => setState(() => widget.data[25] = value),
+          formValidator: widget.formValidator,
+          isInteger: false,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Режим работы механизма передвижения моста',
+          value: widget.data[26],
+          items: widget.data[27],
+          onChanged: (value) => setState(() => widget.data[26] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Продолжительность включения (ПВ) механизма',
+          value: widget.data[28],
+          items: widget.data[29],
+          onChanged: (value) => setState(() => widget.data[28] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Система управления приводом',
+          value: widget.data[30],
+          items: widget.data[31],
+          onChanged: (value) => setState(() => widget.data[30] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Тип токоподвода к крану',
+          value: widget.data[32],
+          items: widget.data[33],
+          onChanged: (value) => setState(() => widget.data[32] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Тип механизма передвижения',
+          value: widget.data[34],
+          items: widget.data[35],
+          onChanged: (value) => setState(() => widget.data[34] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Схема привода передвижения крана',
+          value: widget.data[36],
+          items: widget.data[37],
+          onChanged: (value) => setState(() => widget.data[36] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Система синхронизации механизма',
+          value: widget.data[38],
+          items: widget.data[39],
+          onChanged: (value) => setState(() => widget.data[38] = value),
+          formValidator: widget.formValidator,
+        ),
+        TextFormFieldWidget(
+          label: 'Тип подкранового пути',
+          value: widget.data[40],
+          onChanged: (value) => setState(() => widget.data[40] = value),
+          formValidator: widget.formValidator,
+        ),
+        NumberFormFieldWidget(
+          label: 'Длина подкранового пути, м',
+          value: widget.data[41],
+          onChanged: (value) => setState(() => widget.data[41] = value),
+          formValidator: widget.formValidator,
+          isInteger: false,
+        ),
+        const SizedBox(height: 24),
+      ],
+    );
+  }
+}

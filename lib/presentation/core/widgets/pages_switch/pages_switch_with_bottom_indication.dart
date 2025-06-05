@@ -29,10 +29,10 @@ class PagesSwitch extends StatefulWidget {
 //
 class _PagesSwitchState extends State<PagesSwitch> {
   static const _slideDuration = Duration(milliseconds: 300);
-  static const List<Pages> _pages = [Pages.first, Pages.second, Pages.third];
+  static const List<Pages> _pages = [Pages.initialPage, Pages.advnSettPageFirst, Pages.advnSettPageSecond];
   late final PageController _pageController;
-  Pages _currentPage = Pages.first;
-  final Map<Pages, Map> _pageData = { for (var k in _pages) k : {} };
+  Pages _currentPage = Pages.initialPage;
+  final Map<Pages, Map> _pageData = { for (var k in _pages) k : {} }; 
   bool _isCurrentFormValid = false;
   //
   @override
@@ -63,7 +63,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
   /// Creating all forms on the base of their index
   Widget _createFormByIndex(Pages form) {
     switch(form) {
-      case Pages.first:
+      case Pages.initialPage:
         return InitialPage(
           form: form,
           users: widget._users,
@@ -71,7 +71,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
           //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
-      case Pages.second:
+      case Pages.advnSettPageFirst:
         return InitialPage(
           form: form,
           users: widget._users,
@@ -79,7 +79,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
           //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
-      case Pages.third:
+      case Pages.advnSettPageSecond:
         return InitialPage(
           form: form,
           users: widget._users,

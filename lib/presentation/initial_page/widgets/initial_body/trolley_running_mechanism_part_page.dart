@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+///
+/// Part of [InitialPage] - the trolley running mechanism.
+/// FIve fields.
+class TrolleyRunningMechanismPartPage extends StatefulWidget {
+  //final AppUserStacked users;
+  final Map<int, dynamic> data;
+  final Function() formValidator;
+  ///
+  /// The body of the trolley running mechanism.
+  ///
+  /// [users] - all stored users
+  /// [data] - temprorary example of InitialPage content
+  /// [formValidator] - function for cheking the whole form validity
+  const TrolleyRunningMechanismPartPage({
+    super.key,
+    //required this.users,
+    required this.data,
+    required this.formValidator,
+  });
+  @override
+  State<TrolleyRunningMechanismPartPage> createState() => _TrolleyRunningMechanismPartPageState();
+}
+//
+class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanismPartPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Параметры механизма передвижения грузовой тали',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 16),
+        NumberFormFieldWidget(
+          label: 'Номинальная скорость передвижения тали, м/мин',
+          value: widget.data[16],
+          onChanged: (value) => setState(() => widget.data[16] = value),
+          formValidator: widget.formValidator,
+          isInteger: false,
+        ),
+        NumberFormFieldWidget(
+          label: 'Замедленная скорость передвижения тали, м/мин',
+          value: widget.data[17],
+          onChanged: (value) => setState(() => widget.data[17] = value),
+          formValidator: widget.formValidator,
+          isInteger: false,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Режим работы механизма передвижения тали',
+          value: widget.data[18],
+          items: widget.data[19],
+          onChanged: (value) => setState(() => widget.data[18] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Система управления приводом',
+          value: widget.data[20],
+          items: widget.data[21],
+          onChanged: (value) => setState(() => widget.data[20] = value),
+          formValidator: widget.formValidator,
+        ),
+        DropDownMenuFormFieldWidget(
+          label: 'Тип токоподвода к грузовой тали',
+          value: widget.data[22],
+          items: widget.data[23],
+          onChanged: (value) => setState(() => widget.data[22] = value),
+          formValidator: widget.formValidator,
+        ),
+        const SizedBox(height: 24),
+      ],
+    );
+  }
+}

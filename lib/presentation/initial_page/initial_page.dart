@@ -1,9 +1,9 @@
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body/initial_body.dart';
 ///
 /// Page for initialization params of the crane.
 /// Builds page on the base of list of users 
@@ -11,7 +11,7 @@ import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart
 class InitialPage extends StatefulWidget {
   final AppUserStacked users;
   final Pages form;
-  final Map<String, dynamic> data;
+  final Map<int, dynamic> data;
   //final SgocInit values;
   final Function(bool isValid)? onValidationChanged;
   /// 
