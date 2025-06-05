@@ -58,6 +58,7 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           value: widget.data[46],
           onChanged: (value) => setState(() => widget.data[46] = value),
           formValidator: widget.formValidator,
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы крана (ГОСТ 34017-2016)',

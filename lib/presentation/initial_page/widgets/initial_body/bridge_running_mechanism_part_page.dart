@@ -107,6 +107,7 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           value: widget.data[40],
           onChanged: (value) => setState(() => widget.data[40] = value),
           formValidator: widget.formValidator,
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         NumberFormFieldWidget(
           label: 'Длина подкранового пути, м',
