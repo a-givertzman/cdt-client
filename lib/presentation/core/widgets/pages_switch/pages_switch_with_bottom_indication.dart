@@ -2,7 +2,6 @@ import 'package:cdt_client/presentation/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 import 'package:hmi_networking/hmi_networking.dart';
-import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 ///
 /// Widget that implements switching between 
 /// pages with bottom indication. Switching 
@@ -67,24 +66,18 @@ class _PagesSwitchState extends State<PagesSwitch> {
         return InitialPage(
           form: form,
           users: widget._users,
-          data: Data.data,
-          //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
       case Pages.advnSettPageFirst:
         return InitialPage(
           form: form,
           users: widget._users,
-          data: Data.data,
-          //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
       case Pages.advnSettPageSecond:
         return InitialPage(
           form: form,
           users: widget._users,
-          data: Data.data,
-          //pageData: _pageData,
           onValidationChanged: (isValid) => _updateFormValidity(form, isValid),
         );
     }

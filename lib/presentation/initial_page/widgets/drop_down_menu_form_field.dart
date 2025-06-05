@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cdt_client/domain/validation/emptiness_field_validation.dart';
 ///
 /// Widget for DropDownMenuFormField 
-class DropDownMenuFormFieldWidget extends StatelessWidget{
+class DropDownMenuFormFieldWidget extends StatelessWidget {
   final String label;
-  final dynamic value;
-  final List<dynamic> items;
+  final String value;
+  final List<String> items;
   final Function(dynamic) onChanged;
   final Function() formValidator;
   ///
@@ -17,21 +16,21 @@ class DropDownMenuFormFieldWidget extends StatelessWidget{
   /// [onChanged] - function for changing value of certain field
   /// [formValidator] - function for cheking the whole form validity
   const DropDownMenuFormFieldWidget ({
-  super.key, 
-  required this.label,
-  required this.value,
-  required this.items,
-  required this.onChanged,
-  required this.formValidator,
-  }); 
+    super.key, 
+    required this.label,
+    required this.value,
+    required this.items,
+    required this.onChanged,
+    required this.formValidator,
+  });
+  //
   @override
   Widget build(BuildContext context) {
-    final emptinessValidator = EmptinessFiledValidation();
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.3,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 16.0),
-        child: DropdownButtonFormField<dynamic>(
+        child: DropdownButtonFormField<String>(
           value: items.contains(value) ? value : null,
           decoration: InputDecoration(
             labelText: label,
@@ -41,9 +40,9 @@ class DropDownMenuFormFieldWidget extends StatelessWidget{
             ),
           ),
           items: [
-            DropdownMenuItem<dynamic>(value: null, child: Text('-')),
+            DropdownMenuItem<String>(value: null, child: Text('-')),
             ...items.map(
-              (dynamic item) => DropdownMenuItem<dynamic>(
+              (dynamic item) => DropdownMenuItem<String>(
                 value: item,
                 child: Text(item.toString()),
               ),
@@ -53,7 +52,7 @@ class DropDownMenuFormFieldWidget extends StatelessWidget{
             onChanged(value);
             formValidator();
           },
-          validator: emptinessValidator.validateNotEmpty,
+          // validator: emptinessValidator.validateNotEmpty,
         ),
       ),
     );

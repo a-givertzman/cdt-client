@@ -10,7 +10,6 @@ import 'package:cdt_client/presentation/initial_page/widgets/initial_body/initia
 class InitialPage extends StatefulWidget {
   final AppUserStacked users;
   final Pages form;
-  final Map<int, dynamic> data;
   //final SgocInit values;
   final Function(bool isValid)? onValidationChanged;
   /// 
@@ -25,7 +24,6 @@ class InitialPage extends StatefulWidget {
     super.key,
     required this.users,
     required this.form,
-    required this.data,
     //required this.values,
     required this.onValidationChanged,
   });
@@ -53,7 +51,6 @@ class _InitialPageState extends State<InitialPage> {
       body: InitialBody(
         users: widget.users,
         form: widget.form,
-        data: widget.data,
         onValidationChanged: (isValid) {
           widget.onValidationChanged?.call(isValid);
         },
