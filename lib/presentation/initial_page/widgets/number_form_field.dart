@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:cdt_client/domain/validation/emptiness_field_validation.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Widget for NumberFormField
 class NumberFormFieldWidget extends StatelessWidget{
+  // final TextEditingController controller;
   final String label;
-  final dynamic value;
-  final Function(dynamic) onChanged;
-  final Function() formValidator;
-  final bool isInteger;
+  final String value;
+  final TextInputType? keyboardType;
+  final Function(dynamic)? onChanged;
+  final Function()? formValidator;
+  final Validator? validator;
   ///
   /// The body of NumberFormField
   /// 
@@ -15,24 +17,24 @@ class NumberFormFieldWidget extends StatelessWidget{
   /// [value] - current value of certain field
   /// [onChanged] - function for changing value of certain field
   /// [formValidator] - function for cheking the whole form validity
-  /// [isInteger] - cheking if value is integer or float
   const NumberFormFieldWidget ({
-  super.key, 
-  required this.label,
-  required this.value,
-  required this.onChanged,
-  required this.formValidator,
-  required this.isInteger,
+    super.key, 
+    required this.label,
+    required this.value,
+    this.keyboardType,
+    this.onChanged,
+    this.formValidator,
+    this.validator,
   });
+    // controller = TextEditingController(text: value);
   @override
   Widget build(BuildContext context) {
-    final emptinessValidator = EmptinessFiledValidation();
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.3,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 16.0),
         child: TextFormField(
-          initialValue: value?.toString(),
+          initialValue: value,
           decoration: InputDecoration(
             labelText: label,
             focusedBorder: OutlineInputBorder(
@@ -46,21 +48,18 @@ class NumberFormFieldWidget extends StatelessWidget{
             ),
             enabledBorder: OutlineInputBorder(),
           ),
-          keyboardType: TextInputType.numberWithOptions(
-            decimal: !isInteger, 
-            signed: true, 
-          ),
+          keyboardType: keyboardType,
           onChanged: (value) {
-            if (isInteger) {
-              final num = int.tryParse(value);
-              if (num != null) onChanged(num);
-            } else {
-              final num = double.tryParse(value);
-              if (num != null) onChanged(num);
-            }
-            formValidator();
+            // if (isInteger) {
+            //   final num = int.tryParse(value);
+            //   if (num != null) onChanged(num);
+            // } else {
+            //   final num = double.tryParse(value);
+            //   if (num != null) onChanged(num);
+            // }
+            formValidator?.call();
           },
-          validator: emptinessValidator.validateNotEmpty,
+          validator: (value) => validator?.editFieldValidator(value),
         ),
       ),
     );
