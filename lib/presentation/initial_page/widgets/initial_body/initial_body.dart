@@ -47,46 +47,77 @@ class _InitialBodyState extends State<InitialBody> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        child: Align(
-          alignment: Alignment.center,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Column(
-                    children: [
-                      HoistPartPage(fields: widget.fields, formValidator: _formValidator),
-                    ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          HoistPartPage(fields: widget.fields, formValidator: _formValidator),
+                        ],
+                      ),
+                    ),
                   ),
-                  Column(
-                    children: [
-                      
-                    ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('No data'),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-              SizedBox(height: Setting('ui-paddingDouble').toDouble),
-              Row(
+            ),
+            SizedBox(height: Setting('ui-paddingDouble').toDouble),
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Column(
-                    children: [
-
-                    ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('No data'),
+                                      
+                        ],
+                      ),
+                    ),
                   ),
-                  Column(
-                    children: [
-                      
-                    ],
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('No data'),
+                          
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-              // TrolleyRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
-              // BridgeRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
-              // GeneralCraneParametersPartPage(data: widget.fields, formValidator: _formValidator),
-              // OverallDimensionsCranePartPage(data: widget.fields, formValidator: _formValidator),
-            ],
-          ),
+            ),
+            // TrolleyRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
+            // BridgeRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
+            // GeneralCraneParametersPartPage(data: widget.fields, formValidator: _formValidator),
+            // OverallDimensionsCranePartPage(data: widget.fields, formValidator: _formValidator),
+          ],
         ),
       ),
     );
