@@ -15,13 +15,13 @@ class InitialBody extends StatefulWidget {
   final Pages form;
   // final Map<Pages, Map> pageData;
   final AppUserStacked users;
-  final SgocInit data;
+  final SgocInit fields;
   final Function(bool isValid)? onValidationChanged;
   ///
   /// The body of the [InitialPage] widget.
   ///
   /// [form] - current form
-  /// [data] - temprorary example of InitialPage content
+  /// [fields] - temprorary example of InitialPage content
   /// [pageData] - content of all forms
   /// [users] - all stored users
   /// [onValidationChanged] - callback for checking is form valid
@@ -32,7 +32,7 @@ class InitialBody extends StatefulWidget {
     required this.users,
     required this.onValidationChanged,
   }):
-    data = const SgocInit({});
+    fields = const SgocInit({});
   //
   @override
   State<InitialBody> createState() => _InitialBodyState();
@@ -51,11 +51,11 @@ class _InitialBodyState extends State<InitialBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              HoistPartPage(fields: SgocInit(sgocInit), formValidator: _formValidator),
-              // TrolleyRunningMechanismPartPage(data: SgocInit(sgocInit), formValidator: _formValidator),
-              // BridgeRunningMechanismPartPage(data: SgocInit(sgocInit), formValidator: _formValidator),
-              // GeneralCraneParametersPartPage(data: SgocInit(sgocInit), formValidator: _formValidator),
-              // OverallDimensionsCranePartPage(data: SgocInit(sgocInit), formValidator: _formValidator),
+              HoistPartPage(fields: widget.fields, formValidator: _formValidator),
+              // TrolleyRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
+              // BridgeRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
+              // GeneralCraneParametersPartPage(data: widget.fields, formValidator: _formValidator),
+              // OverallDimensionsCranePartPage(data: widget.fields, formValidator: _formValidator),
             ],
           ),
         ),
