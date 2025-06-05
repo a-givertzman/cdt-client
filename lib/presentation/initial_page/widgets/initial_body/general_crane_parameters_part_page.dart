@@ -1,7 +1,9 @@
+import 'package:cdt_client/domain/validation/only_double_validation_case.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - the general crane parametrs.
 /// Thirteen fields.
@@ -83,14 +85,14 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           value: widget.data[53],
           onChanged: (value) => setState(() => widget.data[53] = value),
           formValidator: widget.formValidator,
-          isInteger: true,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Минимальная температура эксплуатации, °C',
           value: widget.data[54],
           onChanged: (value) => setState(() => widget.data[54] = value),
           formValidator: widget.formValidator,
-          isInteger: true,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Основной вид управления',
@@ -111,21 +113,21 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           value: widget.data[59],
           onChanged: (value) => setState(() => widget.data[59] = value),
           formValidator: widget.formValidator,
-          isInteger: true,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Максимальная масса крана, т',
           value: widget.data[60],
           onChanged: (value) => setState(() => widget.data[60] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Допускаемое давление колеса, кН',
           value: widget.data[61],
           onChanged: (value) => setState(() => widget.data[61] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         const SizedBox(height: 24),
       ],

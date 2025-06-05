@@ -1,6 +1,8 @@
+import 'package:cdt_client/domain/validation/only_double_validation_case.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - the trolley running mechanism.
 /// FIve fields.
@@ -40,14 +42,14 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
           value: widget.data[16],
           onChanged: (value) => setState(() => widget.data[16] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения тали, м/мин',
           value: widget.data[17],
           onChanged: (value) => setState(() => widget.data[17] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы механизма передвижения тали',

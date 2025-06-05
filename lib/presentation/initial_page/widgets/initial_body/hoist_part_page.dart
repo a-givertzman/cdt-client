@@ -1,6 +1,8 @@
+import 'package:cdt_client/domain/validation/only_double_validation_case.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - hoist.
 /// First ten fields.
@@ -40,14 +42,14 @@ class _HoistPartPageState extends State<HoistPartPage> {
           value: widget.data[0],
           onChanged: (value) => setState(() => widget.data[0] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Высота подъёма механизма, м',
           value: widget.data[1],
           onChanged: (value) => setState(() => widget.data[1] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Тип грузозахватного органа',
@@ -61,14 +63,14 @@ class _HoistPartPageState extends State<HoistPartPage> {
           value: widget.data[4],
           onChanged: (value) => setState(() => widget.data[4] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость подъёма, м/мин',
           value: widget.data[5],
           onChanged: (value) => setState(() => widget.data[5] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы механизма подъёма',

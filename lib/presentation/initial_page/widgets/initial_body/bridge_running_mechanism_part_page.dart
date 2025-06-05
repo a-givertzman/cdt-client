@@ -1,7 +1,9 @@
+import 'package:cdt_client/domain/validation/only_double_validation_case.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - the bridge running mechanism.
 /// Eleven fields.
@@ -42,14 +44,14 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           value: widget.data[24],
           onChanged: (value) => setState(() => widget.data[24] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения моста, м/мин',
           value: widget.data[25],
           onChanged: (value) => setState(() => widget.data[25] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы механизма передвижения моста',
@@ -111,7 +113,7 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           value: widget.data[41],
           onChanged: (value) => setState(() => widget.data[41] = value),
           formValidator: widget.formValidator,
-          isInteger: false,
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         const SizedBox(height: 24),
       ],
