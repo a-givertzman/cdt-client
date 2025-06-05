@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cdt_client/domain/validation/emptiness_field_validation.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Widget for TextFormField
 class TextFormFieldWidget extends StatelessWidget{
@@ -7,6 +8,7 @@ class TextFormFieldWidget extends StatelessWidget{
   final dynamic value;
   final Function(dynamic) onChanged;
   final Function() formValidator;
+  final Validator? validator;
   ///
   /// The body of TextFormField
   /// 
@@ -15,15 +17,16 @@ class TextFormFieldWidget extends StatelessWidget{
   /// [onChanged] - function for changing value of certain field
   /// [formValidator] - function for cheking the whole form validity
   const TextFormFieldWidget ({
-  super.key, 
-  required this.label,
-  required this.value,
-  required this.onChanged,
-  required this.formValidator,
-  });  
+    super.key, 
+    required this.label,
+    required this.value,
+    required this.onChanged,
+    required this.formValidator,
+    this.validator,
+  });
+  //
   @override
   Widget build(BuildContext context) {
-    final emptinessValidator = EmptinessFiledValidation();
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * 0.3,
       child: Padding(
@@ -47,7 +50,7 @@ class TextFormFieldWidget extends StatelessWidget{
             onChanged(value);
             formValidator();
           },
-          validator: emptinessValidator.validateNotEmpty,
+          validator: (value) => validator?.editFieldValidator(value),
         ),
       ),
     );
