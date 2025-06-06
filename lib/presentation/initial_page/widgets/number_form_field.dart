@@ -8,7 +8,7 @@ class NumberFormFieldWidget extends StatelessWidget{
   final String value;
   final TextInputType? keyboardType;
   final Function(dynamic)? onChanged;
-  final Function()? formValidator;
+  final Function(String?)? formValidator;
   final Validator? validator;
   ///
   /// The body of NumberFormField
@@ -48,7 +48,9 @@ class NumberFormFieldWidget extends StatelessWidget{
         ),
         keyboardType: keyboardType,
         onChanged: (value) {
-          formValidator?.call();
+          formValidator?.call(
+            validator?.editFieldValidator(value)
+          );
         },
         validator: (value) => validator?.editFieldValidator(value),
       ),

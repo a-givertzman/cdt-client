@@ -10,7 +10,7 @@ import 'package:hmi_widgets/hmi_widgets.dart';
 class HoistPartPage extends StatefulWidget {
   //final AppUserStacked users;
   final SgocInit fields;
-  final Function() formValidator;
+  final Function(String?) formValidator;
   ///
   /// The body of hoist.
   ///

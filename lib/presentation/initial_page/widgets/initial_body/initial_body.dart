@@ -125,14 +125,9 @@ class _InitialBodyState extends State<InitialBody> {
   ///
   /// Check if all fields in form are not empty
   /// and notificate [PagesSwitch].
-  void _formValidator() {
-    final isValid = _validate();
+  void _formValidator(String? validationResult) {
+    final isValid = (_formKey.currentState?.validate() ?? false) && (validationResult == null);
     widget.onValidationChanged?.call(isValid);
-  }
-  ///
-  /// Check if all fields in form are not empty
-  bool _validate() {
-    return _formKey.currentState?.validate() ?? false;
   }
 }
 // ElevatedButton(

@@ -6,7 +6,7 @@ class DropDownMenuFormFieldWidget extends StatelessWidget {
   final String value;
   final List<String> items;
   final Function(dynamic) onChanged;
-  final Function() formValidator;
+  final Function(String?) formValidator;
   ///
   /// The body of DropDownMenuFormField
   /// 
@@ -48,7 +48,7 @@ class DropDownMenuFormFieldWidget extends StatelessWidget {
         ],
         onChanged: (dynamic value) {
           onChanged(value);
-          formValidator();
+          formValidator(null);
         },
         // validator: emptinessValidator.validateNotEmpty,
       ),
