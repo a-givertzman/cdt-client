@@ -53,7 +53,8 @@ class SgocInit {
       (_map[key] as Map).update('value', value);
       return Ok(null);
     }
-    _map.update(key, value, ifAbsent: () => value);
+    //_map.update(key,value, ifAbsent: () => value);
+    _map[key] = value;
     return Ok(null);
   }
 }

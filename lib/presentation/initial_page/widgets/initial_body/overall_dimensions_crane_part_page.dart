@@ -8,18 +8,18 @@ import 'package:hmi_widgets/hmi_widgets.dart';
 /// Seven fields.
 class OverallDimensionsCranePartPage extends StatefulWidget {
   //final AppUserStacked users;
-  final SgocInit data;
-  final Function() formValidator;
+  final SgocInit fields;
+  final Function(String?) formValidator;
   ///
   /// The body of the trolley running mechanism.
   ///
   /// [users] - all stored users
-  /// [data] - temprorary example of InitialPage content
+  /// [fields] - temprorary example of InitialPage content
   /// [formValidator] - function for cheking the whole form validity
   const OverallDimensionsCranePartPage({
     super.key,
     //required this.users,
-    required this.data,
+    required this.fields,
     required this.formValidator,
   });
   @override
@@ -39,50 +39,50 @@ class _OverallDimensionsCranePartPageState extends State<OverallDimensionsCraneP
         const SizedBox(height: 16),
         NumberFormFieldWidget(
           label: 'Пролёт крана, м',
-          value: widget.data[62],
-          onChanged: (value) => setState(() => widget.data[62] = value),
+          value: widget.fields.get('span'),
+          onChanged: (value) => setState(() => widget.fields.update('span', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Приближение к левому краю (l1), м',
-          value: widget.data[63],
-          onChanged: (value) => setState(() => widget.data[63] = value),
+          value: widget.fields.get('left-edge-approach-lifting-device'),
+          onChanged: (value) => setState(() => widget.fields.update('left-edge-approach-lifting-device', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Приближение к правому краю (l2), м',
-          value: widget.data[64],
-          onChanged: (value) => setState(() => widget.data[64] = value),
+          value: widget.fields.get('right-edge-approach-lifting-device'),
+          onChanged: (value) => setState(() => widget.fields.update('right-edge-approach-lifting-device', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Вертикальное расстояние до грузозахватного органа, м',
-          value: widget.data[65],
-          onChanged: (value) => setState(() => widget.data[65] = value),
+          value: widget.fields.get('vertical-distance-from-crane-rail-to-lifting-device'),
+          onChanged: (value) => setState(() => widget.fields.update('vertical-distance-from-crane-rail-to-lifting-device', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Макс. расстояние до верхней точки крана, м',
-          value: widget.data[66],
-          onChanged: (value) => setState(() => widget.data[66] = value),
+          value: widget.fields.get('maximum-vertical-distance-from-the-crane-rail-to-the-top-of-the-crane'),
+          onChanged: (value) => setState(() => widget.fields.update('maximum-vertical-distance-from-the-crane-rail-to-the-top-of-the-crane', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Максимальная база крана, м',
-          value: widget.data[67],
-          onChanged: (value) => setState(() => widget.data[67] = value),
+          value: widget.fields.get('max-crane-base'),
+          onChanged: (value) => setState(() => widget.fields.update('max-crane-base', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Максимальная ширина крана, м',
-          value: widget.data[68],
-          onChanged: (value) => setState(() => widget.data[68] = value),
+          value: widget.fields.get('max-width-crane'),
+          onChanged: (value) => setState(() => widget.fields.update('max-width-crane', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),

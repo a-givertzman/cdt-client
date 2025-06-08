@@ -10,18 +10,18 @@ import 'package:hmi_widgets/hmi_widgets.dart';
 /// Eleven fields.
 class BridgeRunningMechanismPartPage extends StatefulWidget {
   //final AppUserStacked users;
-  final SgocInit data;
-  final Function() formValidator;
+  final SgocInit fields;
+  final Function(String?) formValidator;
   ///
   /// The body of the bridge running mechanism.
   ///
   /// [users] - all stored users
-  /// [data] - temprorary example of InitialPage content
+  /// [fields] - temprorary example of InitialPage content
   /// [formValidator] - function for cheking the whole form validity
   const BridgeRunningMechanismPartPage({
     super.key,
     //required this.users,
-    required this.data,
+    required this.fields,
     required this.formValidator,
   });
   @override
@@ -42,78 +42,78 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
         const SizedBox(height: 16),
         NumberFormFieldWidget(
           label: 'Номинальная скорость передвижения моста, м/мин',
-          value: widget.data[24],
-          onChanged: (value) => setState(() => widget.data[24] = value),
+          value: widget.fields.get('rated-travelling-bridge-speed'),
+          onChanged: (value) => setState(() => widget.fields.update('rated-travelling-bridge-speed', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения моста, м/мин',
-          value: widget.data[25],
-          onChanged: (value) => setState(() => widget.data[25] = value),
+          value: widget.fields.get('slow-travelling-bridge-speed'),
+          onChanged: (value) => setState(() => widget.fields.update('slow-travelling-bridge-speed', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
-          label: 'Режим работы механизма передвижения моста',
-          value: widget.data[26],
-          items: widget.data[27],
-          onChanged: (value) => setState(() => widget.data[26] = value),
+          label: 'Режим работы механизма передвижения моста крана',
+          value: widget.fields.getOptionsValue('crane-drive-group'),
+          items: widget.fields.getOptions('crane-drive-group'),
+          onChanged: (value) => setState(() => widget.fields.update('crane-drive-group', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Продолжительность включения (ПВ) механизма',
-          value: widget.data[28],
-          items: widget.data[29],
-          onChanged: (value) => setState(() => widget.data[28] = value),
+          value: widget.fields.getOptionsValue('bridge-movement-duration'),
+          items: widget.fields.getOptions('bridge-movement-duration'),
+          onChanged: (value) => setState(() => widget.fields.update('bridge-movement-duration', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Система управления приводом',
-          value: widget.data[30],
-          items: widget.data[31],
-          onChanged: (value) => setState(() => widget.data[30] = value),
+          value: widget.fields.getOptionsValue('bridge-control-system'),
+          items: widget.fields.getOptions('bridge-control-system'),
+          onChanged: (value) => setState(() => widget.fields.update('bridge-control-system', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Тип токоподвода к крану',
-          value: widget.data[32],
-          items: widget.data[33],
-          onChanged: (value) => setState(() => widget.data[32] = value),
+          value: widget.fields.getOptionsValue('crane-power-system'),
+          items: widget.fields.getOptions('crane-power-system'),
+          onChanged: (value) => setState(() => widget.fields.update('crane-power-system', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Тип механизма передвижения',
-          value: widget.data[34],
-          items: widget.data[35],
-          onChanged: (value) => setState(() => widget.data[34] = value),
+          value: widget.fields.getOptionsValue('bridge-drive-type-system'),
+          items: widget.fields.getOptions('bridge-drive-type-system'),
+          onChanged: (value) => setState(() => widget.fields.update('bridge-drive-type-system', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Схема привода передвижения крана',
-          value: widget.data[36],
-          items: widget.data[37],
-          onChanged: (value) => setState(() => widget.data[36] = value),
+          value: widget.fields.getOptionsValue('bridge-drive-diagram'),
+          items: widget.fields.getOptions('bridge-drive-diagram'),
+          onChanged: (value) => setState(() => widget.fields.update('bridge-drive-diagram', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
-          label: 'Система синхронизации механизма',
-          value: widget.data[38],
-          items: widget.data[39],
-          onChanged: (value) => setState(() => widget.data[38] = value),
+          label: 'Система синхронизации механизма передвижения крана',
+          value: widget.fields.getOptionsValue('bridge-control-system-of-synchronous-movement'),
+          items: widget.fields.getOptions('bridge-control-system-of-synchronous-movement'),
+          onChanged: (value) => setState(() => widget.fields.update('bridge-control-system-of-synchronous-movement', value)),
           formValidator: widget.formValidator,
         ),
         TextFormFieldWidget(
           label: 'Тип подкранового пути',
-          value: widget.data[40],
-          onChanged: (value) => setState(() => widget.data[40] = value),
+          value: widget.fields.get('type-crane-rail'),
+          onChanged: (value) => setState(() => widget.fields.update('type-crane-rail', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         NumberFormFieldWidget(
           label: 'Длина подкранового пути, м',
-          value: widget.data[41],
-          onChanged: (value) => setState(() => widget.data[41] = value),
+          value: widget.fields.get('crane-rail-length'),
+          onChanged: (value) => setState(() => widget.fields.update('crane-rail-length', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),

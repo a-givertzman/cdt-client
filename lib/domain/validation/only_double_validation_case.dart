@@ -40,5 +40,4 @@ class OnlyDoubleValidationCase implements ValidationCase {
       ),
     );
   }
-
 }

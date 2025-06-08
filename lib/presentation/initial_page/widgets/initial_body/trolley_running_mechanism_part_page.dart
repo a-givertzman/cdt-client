@@ -9,18 +9,18 @@ import 'package:hmi_widgets/hmi_widgets.dart';
 /// FIve fields.
 class TrolleyRunningMechanismPartPage extends StatefulWidget {
   //final AppUserStacked users;
-  final SgocInit data;
-  final Function() formValidator;
+  final SgocInit fields;
+  final Function(String?) formValidator;
   ///
   /// The body of the trolley running mechanism.
   ///
   /// [users] - all stored users
-  /// [data] - temprorary example of InitialPage content
+  /// [fields] - temprorary example of InitialPage content
   /// [formValidator] - function for cheking the whole form validity
   const TrolleyRunningMechanismPartPage({
     super.key,
     //required this.users,
-    required this.data,
+    required this.fields,
     required this.formValidator,
   });
   @override
@@ -40,37 +40,37 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
         const SizedBox(height: 16),
         NumberFormFieldWidget(
           label: 'Номинальная скорость передвижения тали, м/мин',
-          value: widget.data[16],
-          onChanged: (value) => setState(() => widget.data[16] = value),
+          value: widget.fields.get('rated-travelling-trolley-speed'),
+          onChanged: (value) => setState(() => widget.fields.update('rated-travelling-trolley-speed', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения тали, м/мин',
-          value: widget.data[17],
-          onChanged: (value) => setState(() => widget.data[17] = value),
+          value: widget.fields.get('slow-travelling-trolley-speed'),
+          onChanged: (value) => setState(() => widget.fields.update('slow-travelling-trolley-speed', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы механизма передвижения тали',
-          value: widget.data[18],
-          items: widget.data[19],
-          onChanged: (value) => setState(() => widget.data[18] = value),
+          value: widget.fields.getOptionsValue('trolley-group'),
+          items: widget.fields.getOptions('trolley-group'),
+          onChanged: (value) => setState(() => widget.fields.update('trolley-group', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Система управления приводом',
-          value: widget.data[20],
-          items: widget.data[21],
-          onChanged: (value) => setState(() => widget.data[20] = value),
+          value: widget.fields.getOptionsValue('trolley-control-system'),
+          items: widget.fields.getOptions('trolley-control-system'),
+          onChanged: (value) => setState(() => widget.fields.update('trolley-control-system', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Тип токоподвода к грузовой тали',
-          value: widget.data[22],
-          items: widget.data[23],
-          onChanged: (value) => setState(() => widget.data[22] = value),
+          value: widget.fields.getOptionsValue('trolley-power-system'),
+          items: widget.fields.getOptions('trolley-power-system'),
+          onChanged: (value) => setState(() => widget.fields.update('ttrolley-power-system', value)),
           formValidator: widget.formValidator,
         ),
         const SizedBox(height: 24),

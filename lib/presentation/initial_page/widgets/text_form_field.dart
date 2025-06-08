@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cdt_client/domain/validation/emptiness_field_validation.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Widget for TextFormField
@@ -7,7 +6,7 @@ class TextFormFieldWidget extends StatelessWidget{
   final String label;
   final dynamic value;
   final Function(dynamic) onChanged;
-  final Function() formValidator;
+  final Function(String?) formValidator;
   final Validator? validator;
   ///
   /// The body of TextFormField
@@ -27,31 +26,26 @@ class TextFormFieldWidget extends StatelessWidget{
   //
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.sizeOf(context).width * 0.3,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 16.0),
-        child: TextFormField(
-          initialValue: value,
-          decoration: InputDecoration(
-            labelText: label,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 2.0),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 2.0),
-            ),
-            enabledBorder: OutlineInputBorder(),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: TextFormField(
+        initialValue: value,
+        decoration: InputDecoration(
+          labelText: label,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
           ),
-          onChanged: (value) {
-            onChanged(value);
-            formValidator();
-          },
-          validator: (value) => validator?.editFieldValidator(value),
+          errorBorder: OutlineInputBorder(),
+          focusedErrorBorder: OutlineInputBorder(),
+          enabledBorder: OutlineInputBorder(),
         ),
+        onChanged: (value) {
+          onChanged(value);
+          formValidator?.call(
+            validator?.editFieldValidator(value)
+          );
+        },
+        validator: (value) => validator?.editFieldValidator(value),
       ),
     );
   }

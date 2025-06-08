@@ -35,15 +35,11 @@ class NumberFormFieldWidget extends StatelessWidget{
         initialValue: value,
         decoration: InputDecoration(
           labelText: label,
-          // focusedBorder: OutlineInputBorder(
-          //   borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
-          // ),
+          focusedBorder: OutlineInputBorder(),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2.0),
           ),
-          // focusedErrorBorder: OutlineInputBorder(
-          //   borderSide: BorderSide(color: Colors.red, width: 2.0),
-          // ),
+          focusedErrorBorder: OutlineInputBorder(),
           enabledBorder: OutlineInputBorder(),
         ),
         keyboardType: keyboardType,

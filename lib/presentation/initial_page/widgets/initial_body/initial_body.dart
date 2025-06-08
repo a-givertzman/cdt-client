@@ -1,13 +1,13 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
-// import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
-// import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
-// import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
-// import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
 ///
 /// [InitialPage] body widget.
 /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).
@@ -50,13 +50,16 @@ class _InitialBodyState extends State<InitialBody> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
+            Container(
+              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start, 
+                mainAxisSize:MainAxisSize.max,
                 children: [
-                  Expanded(
+                  Container(
+                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
                     child: Padding(
                       padding: EdgeInsets.all(Setting('ui-padding').toDouble),
                       child: Column(
@@ -67,13 +70,14 @@ class _InitialBodyState extends State<InitialBody> {
                       ),
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
                     child: Padding(
                       padding: EdgeInsets.all(Setting('ui-padding').toDouble),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('No data'),
+                          TrolleyRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
                         ],
                       ),
                     ),
@@ -82,30 +86,32 @@ class _InitialBodyState extends State<InitialBody> {
               ),
             ),
             SizedBox(height: Setting('ui-paddingDouble').toDouble),
-            Expanded(
+            Container(
+              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start, 
+                mainAxisSize:MainAxisSize.max,
                 children: [
-                  Expanded(
+                  Container(
+                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width/2),
                     child: Padding(
                       padding: EdgeInsets.all(Setting('ui-padding').toDouble),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('No data'),
-                                      
+                          BridgeRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),                 
                         ],
                       ),
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width/2),
                     child: Padding(
                       padding: EdgeInsets.all(Setting('ui-padding').toDouble),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('No data'),
-                          
+                          GeneralCraneParametersPartPage(fields: widget.fields, formValidator: _formValidator),
                         ],
                       ),
                     ),
@@ -113,10 +119,19 @@ class _InitialBodyState extends State<InitialBody> {
                 ],
               ),
             ),
-            // TrolleyRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
-            // BridgeRunningMechanismPartPage(data: widget.fields, formValidator: _formValidator),
-            // GeneralCraneParametersPartPage(data: widget.fields, formValidator: _formValidator),
-            // OverallDimensionsCranePartPage(data: widget.fields, formValidator: _formValidator),
+            Container(
+              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
+              child: Padding(
+                padding: EdgeInsets.all(Setting('ui-padding').toDouble),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center, 
+                  mainAxisSize: MainAxisSize.min,
+                    children: [
+                      OverallDimensionsCranePartPage(fields: widget.fields, formValidator: _formValidator),
+                    ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -126,7 +141,7 @@ class _InitialBodyState extends State<InitialBody> {
   /// Check if all fields in form are not empty
   /// and notificate [PagesSwitch].
   void _formValidator(String? validationResult) {
-    final isValid = (_formKey.currentState?.validate() ?? false) && (validationResult == null);
+    final isValid = (_formKey.currentState?.validate() ?? false) && (validationResult == null || validationResult.isEmpty);
     widget.onValidationChanged?.call(isValid);
   }
 }
@@ -195,71 +210,108 @@ final sgocInit = {
     'options': const ['safe', 'dangerous'], // type of lifted load options
   },
   // Trolley running mechanism
-  'rated travelling trolley speed': 20.0, // rated travelling trolley speed
-  'slow travelling trolley speed': 5.0, // slow travelling trolley speed
-  'trolley group': "M4", // trolley group
-  'trolley group options': List.generate(8, (index) => 'M${index + 1}'), // trolley group options
-  'trolley control system': "Variable Frequency Drive (VFD)", // trolley control system
-  'trolley control system options': const [ // trolley control system options
-    'Variable Frequency Drive (VFD)',
-    'Relay-Contactor Control System',
-    'Thyristor-Choke Control System',
-  ],
-  'trolley power system': "conductor bar", // trolley power system
-  'trolley power system options': const ['festoon system', 'energy chain', 'conductor bar'], // trolley power system options
+  'rated-travelling-trolley-speed': '20.0',
+  'slow-travelling-trolley-speed': '5.0',
+  'trolley-group': {
+    'value': 'M4',
+    'options': List.generate(8, (index) => 'M${index + 1}'),
+  },
+  'trolley-control-system': {
+    'value': 'Variable Frequency Drive (VFD)',
+    'options': [
+      'Variable Frequency Drive (VFD)',
+      'Relay-Contactor Control System',
+      'Thyristor-Choke Control System',
+    ],
+  },
+  'trolley-power-system': {
+    'value': 'conductor bar',
+    'options': ['festoon system', 'energy chain', 'conductor bar'],
+  },
+
   // Bridge running mechanism
-  'rated travelling bridge speed': 32.0, // rated travelling bridge speed
-  'slow travelling bridge speed': 8.0, // slow travelling bridge speed
-  'crane drive group': "M4", // crane drive group
-  'crane drive group options': List.generate(8, (index) => 'M${index + 1}'), // crane drive group options
-  'bridge movement duration': "40%", // bridge movement duration
-  'bridge movement duration options': const ['15%', '25%', '40%', '60%', '100%'], // bridge movement duration options
-  'bridge control system': "Variable Frequency Drive (VFD)", // bridge control system
-  'bridge control system options': const [ // bridge control system options
-    'Variable Frequency Drive (VFD)',
-    'Relay-Contactor Control System',
-    'Thyristor-Choke Control System',
-  ],
-  'crane power system': "conductor bar", // crane power system
-  'crane power system options': const ['festoon system', 'cable reel', 'energy chain', 'conductor bar'], // crane power system options
-  'bridge drive type system': "gearmotor", // bridge drive type system
-  'bridge drive type system options': const ['detailed bridge drive', 'gearmotor'], // bridge drive type system options
-  'bridge drive diagram': "separate drive", // bridge drive diagram
-  'bridge drive diagram options': const ['central drive', 'separate drive'], // bridge drive diagram options
-  'bridge control system of synchronous movement': "present", // bridge control system of synchronous movement
-  'bridge control system of synchronous movement options': const ['present', 'absent'], // bridge control system of synchronous movement options
-  'type crane rail': "KR-70", // type crane rail
-  'crane rail length': 50.0, // crane rail length
+  'rated-travelling-bridge-speed': '32.0',
+  'slow-travelling-bridge-speed': '8.0',
+  'crane-drive-group': {
+    'value': 'M4',
+    'options': List.generate(8, (index) => 'M${index + 1}'),
+  },
+  'bridge-movement-duration': {
+    'value': '40%',
+    'options': ['15%', '25%', '40%', '60%', '100%'],
+  },
+  'bridge-control-system': {
+    'value': 'Variable Frequency Drive (VFD)',
+    'options': [
+      'Variable Frequency Drive (VFD)',
+      'Relay-Contactor Control System',
+      'Thyristor-Choke Control System',
+    ],
+  },
+  'crane-power-system': {
+    'value': 'conductor bar',
+    'options': ['festoon system', 'cable reel', 'energy chain', 'conductor bar'],
+  },
+  'bridge-drive-type-system': {
+    'value': 'gearmotor',
+    'options': ['detailed bridge drive', 'gearmotor'],
+  },
+  'bridge-drive-diagram': {
+    'value': 'separate drive',
+    'options': ['central drive', 'separate drive'],
+  },
+  'bridge-control-system-of-synchronous-movement': {
+    'value': 'present',
+    'options': ['present', 'absent'],
+  },
+  'type-crane-rail': '',
+  'crane-rail-length': '50.0',
+
   // General crane parameters
-  'crane purpose': "industrial purpose", // crane purpose
-  'crane purpose options': const ['industrial purpose', 'metallurgical purpose', 'special purpose', 'marine purpose'], // crane purpose options
-  'explosion-fire-safe crane purpose': "industrial purpose", // explosion-fire-safe crane purpose
-  'explosion-fire-safe crane purpose options': const ['industrial purpose', 'fire-safe purpose', 'explosion-safe purpose'], // explosion-fire-safe crane purpose options
-  'marking of fire/explosion hazardous operating environment': "", // marking of fire/explosion hazardous operating environment
-  'duty class': "A5", // duty class
-  'duty class options': List.generate(12, (index) => 'A$index'), // duty class options
-  'climatic design and placement category crane': "У3", // climatic design and placement category crane
-  'climatic design and placement category crane options': const [ // climatic design and placement category crane options
-    'У1', 'У2', 'У3', 'У5', 'ХЛ1', 'ХЛ2', 'ХЛ3', 'УХЛ4', 'УХЛ4.1', 'УХЛ4.2',
-    'О4', 'О4.1', 'О4.2', 'Т5', 'ТС2', 'В3', 'В3.1', 'В4.1', 'ОМ.4', 'В5'
-  ],
-  'crane wind area': "II", // crane wind area
-  'crane wind area options': const ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'морской'], // crane wind area options
-  'max use temperature': 40, // max use temperature
-  'min use temperature': -20, // min use temperature
-  'basic crane control': "pendant control", // basic crane control
-  'basic crane control options': const ['crane cab', 'pendant control', 'remote control', 'cab/remote control'], // basic crane control options
-  'cab location': "bridge edge", // cab location
-  'cab location options': const ['bridge edge', 'bridge span center', 'crane trolley', 'None value'], // cab location options
-  'identical hoists volume': 1, // identical hoists volume
-  'max crane mass': 8.5, // max crane mass
-  'max wheel load': 45.0, // max wheel load
+  'crane-purpose': {
+    'value': 'industrial purpose',
+    'options': ['industrial purpose', 'metallurgical purpose', 'special purpose', 'marine purpose'],
+  },
+  'explosion-fire-safe-crane-purpose': {
+    'value': 'industrial purpose',
+    'options': ['industrial purpose', 'fire-safe purpose', 'explosion-safe purpose'],
+  },
+  'marking-of-fire-explosion-hazardous-operating-environment': '',
+  'duty-class': {
+    'value': 'A5',
+    'options': List.generate(12, (index) => 'A$index'),
+  },
+  'climatic-design-and-placement-category-crane': {
+    'value': 'У3',
+    'options': [
+      'У1', 'У2', 'У3', 'У5', 'ХЛ1', 'ХЛ2', 'ХЛ3', 'УХЛ4', 'УХЛ4.1', 'УХЛ4.2',
+      'О4', 'О4.1', 'О4.2', 'Т5', 'ТС2', 'В3', 'В3.1', 'В4.1', 'ОМ.4', 'В5'
+    ],
+  },
+  'crane-wind-area': {
+    'value': 'II',
+    'options': ['0', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'морской'],
+  },
+  'max-use-temperature': '40',
+  'min-use-temperature': '-20',
+  'basic-crane-control': {
+    'value': 'pendant control',
+    'options': ['crane cab', 'pendant control', 'remote control', 'cab/remote control'],
+  },
+  'cab-location': {
+    'value': 'bridge edge',
+    'options': ['bridge edge', 'bridge span center', 'crane trolley', 'None value'],
+  },
+  'identical-hoists-volume': '1',
+  'max-crane-mass': '8.5',
+  'max-wheel-load': '45.0',
+
   // Crane dimensions
-  'span': 10.5, // span
-  'left edge approach lifting device': 0.3, // left edge approach lifting device
-  'right edge approach lifting device': 0.3, // right edge approach lifting device
-  'vertical distance from crane rail to lifting device': 0.5, // vertical distance from crane rail to lifting device
-  'maximum vertical distance from the crane rail to the top of the crane': 1.8, // maximum vertical distance from the crane rail to the top of the crane
-  'max crane base': 4.2, // max crane base
-  'max width crane': 2.1, // max width crane
+  'span': '10.5',
+  'left-edge-approach-lifting-device': '0.3',
+  'right-edge-approach-lifting-device': '0.3',
+  'vertical-distance-from-crane-rail-to-lifting-device': '0.5',
+  'maximum-vertical-distance-from-the-crane-rail-to-the-top-of-the-crane': '1.8',
+  'max-crane-base': '4.2',
+  'max-width-crane': '2.1'
 };

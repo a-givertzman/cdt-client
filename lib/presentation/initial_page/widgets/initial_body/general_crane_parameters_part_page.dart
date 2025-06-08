@@ -10,18 +10,18 @@ import 'package:hmi_widgets/hmi_widgets.dart';
 /// Thirteen fields.
 class GeneralCraneParametersPartPage extends StatefulWidget {
   //final AppUserStacked users;
-  final SgocInit data;
-  final Function() formValidator;
+  final SgocInit fields;
+  final Function(String?) formValidator;
   ///
   /// The body of the general crane parametrs.
   ///
   /// [users] - all stored users
-  /// [data] - temprorary example of InitialPage content
+  /// [fields] - temprorary example of InitialPage content
   /// [formValidator] - function for cheking the whole form validity
   const GeneralCraneParametersPartPage({
     super.key,
     //required this.users,
-    required this.data,
+    required this.fields,
     required this.formValidator,
   });
   @override
@@ -42,92 +42,92 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
         const SizedBox(height: 16),
         DropDownMenuFormFieldWidget(
           label: 'Исполнение крана',
-          value: widget.data[42],
-          items: widget.data[43],
-          onChanged: (value) => setState(() => widget.data[42] = value),
+          value: widget.fields.getOptionsValue('crane-purpose'),
+          items: widget.fields.getOptions('crane-purpose'),
+          onChanged: (value) => setState(() => widget.fields.update('crane-purpose', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Взрыво-пожаробезопасное исполнение',
-          value: widget.data[44],
-          items: widget.data[45],
-          onChanged: (value) => setState(() => widget.data[44] = value),
+          value: widget.fields.getOptionsValue('explosion-fire-safe-crane-purpose'),
+          items: widget.fields.getOptions('explosion-fire-safe-crane-purpose'),
+          onChanged: (value) => setState(() => widget.fields.update('explosion-fire-safe-crane-purpose', value)),
           formValidator: widget.formValidator,
         ),
         TextFormFieldWidget(
           label: 'Маркировка пожаро-/взрывоопасной среды',
-          value: widget.data[46],
-          onChanged: (value) => setState(() => widget.data[46] = value),
+          value: widget.fields.get('marking-of-fire-explosion-hazardous-operating-environment'),
+          onChanged: (value) => setState(() => widget.fields.update('marking-of-fire-explosion-hazardous-operating-environment', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы крана (ГОСТ 34017-2016)',
-          value: widget.data[47],
-          items: widget.data[48],
-          onChanged: (value) => setState(() => widget.data[47] = value),
+          value: widget.fields.getOptionsValue('duty-class'),
+          items: widget.fields.getOptions('duty-class'),
+          onChanged: (value) => setState(() => widget.fields.update('duty-class', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Климатическое исполнение',
-          value: widget.data[49],
-          items: widget.data[50],
-          onChanged: (value) => setState(() => widget.data[49] = value),
+          value: widget.fields.getOptionsValue('climatic-design-and-placement-category-crane'),
+          items: widget.fields.getOptions('climatic-design-and-placement-category-crane'),
+          onChanged: (value) => setState(() => widget.fields.update('climatic-design-and-placement-category-crane', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Ветровой район',
-          value: widget.data[51],
-          items: widget.data[52],
-          onChanged: (value) => setState(() => widget.data[51] = value),
+          value: widget.fields.getOptionsValue('crane-wind-area'),
+          items: widget.fields.getOptions('crane-wind-area'),
+          onChanged: (value) => setState(() => widget.fields.update('crane-wind-area', value)),
           formValidator: widget.formValidator,
         ),
         NumberFormFieldWidget(
           label: 'Максимальная температура эксплуатации, °C',
-          value: widget.data[53],
-          onChanged: (value) => setState(() => widget.data[53] = value),
+          value: widget.fields.get('max-use-temperature'),
+          onChanged: (value) => setState(() => widget.fields.update('max-use-temperature', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Минимальная температура эксплуатации, °C',
-          value: widget.data[54],
-          onChanged: (value) => setState(() => widget.data[54] = value),
+          value: widget.fields.get('min-use-temperature'),
+          onChanged: (value) => setState(() => widget.fields.update('min-use-temperature', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Основной вид управления',
-          value: widget.data[55],
-          items: widget.data[56],
-          onChanged: (value) => setState(() => widget.data[55] = value),
+          value: widget.fields.getOptionsValue('basic-crane-control'),
+          items: widget.fields.getOptions('basic-crane-control'),
+          onChanged: (value) => setState(() => widget.fields.update('basic-crane-control', value)),
           formValidator: widget.formValidator,
         ),
         DropDownMenuFormFieldWidget(
           label: 'Место расположения кабины',
-          value: widget.data[57],
-          items: widget.data[58],
-          onChanged: (value) => setState(() => widget.data[57] = value),
+          value: widget.fields.getOptionsValue('cab-location'),
+          items: widget.fields.getOptions('cab-location'),
+          onChanged: (value) => setState(() => widget.fields.update('cab-location', value)),
           formValidator: widget.formValidator,
         ),
         NumberFormFieldWidget(
           label: 'Количество грузовых тележек, шт',
-          value: widget.data[59],
-          onChanged: (value) => setState(() => widget.data[59] = value),
+          value: widget.fields.get('identical-hoists-volume'),
+          onChanged: (value) => setState(() => widget.fields.update('identical-hoists-volume', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Максимальная масса крана, т',
-          value: widget.data[60],
-          onChanged: (value) => setState(() => widget.data[60] = value),
+          value: widget.fields.get('max-crane-mass'),
+          onChanged: (value) => setState(() => widget.fields.update('max-crane-mass', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Допускаемое давление колеса, кН',
-          value: widget.data[61],
-          onChanged: (value) => setState(() => widget.data[61] = value),
+          value: widget.fields.get('max-wheel-load'),
+          onChanged: (value) => setState(() => widget.fields.update('max-wheel-load', value)),
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
