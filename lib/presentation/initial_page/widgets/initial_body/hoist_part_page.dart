@@ -1,7 +1,7 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
 // ignore: implementation_imports
@@ -54,7 +54,7 @@ class _HoistPartPageState extends State<HoistPartPage> {
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип грузозахватного органа',
           value: widget.fields.getOptionsValue('lifting-device'),
           items: widget.fields.getOptions('lifting-device'),
@@ -77,35 +77,35 @@ class _HoistPartPageState extends State<HoistPartPage> {
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип привода механизма подъёма',
           value: widget.fields.getOptionsValue('lifting-mechanism-drive-type'),
           items: widget.fields.getOptions('lifting-mechanism-drive-type'),
           onChanged: (value) => setState(() => widget.fields.update('lifting-mechanism-drive-type', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Продолжительность включения (ПВ)',
           value: widget.fields.getOptionsValue('lifting-duration'),
           items: widget.fields.getOptions('lifting-duration'),
           onChanged: (value) => setState(() => widget.fields.update('lifting-duration', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Система управления приводом',
           value: widget.fields.getOptionsValue('hoist-control-system'),
           items: widget.fields.getOptions('hoist-control-system'),
           onChanged: (value) => setState(() => widget.fields.update('hoist-control-system', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип привода механизма подъёма',
           value: widget.fields.getOptionsValue('hoist-group'),
           items: widget.fields.getOptions('hoist-group'),
           onChanged: (value) => setState(() => widget.fields.update('hoist-group', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип поднимаемого груза',
           value: widget.fields.getOptionsValue('type-of-lifted-load'),
           items: widget.fields.getOptions('type-of-lifted-load'),

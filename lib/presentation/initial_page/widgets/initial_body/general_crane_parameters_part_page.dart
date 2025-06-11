@@ -1,7 +1,7 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
@@ -44,14 +44,14 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 16),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Исполнение крана',
           value: widget.fields.getOptionsValue('crane-purpose'),
           items: widget.fields.getOptions('crane-purpose'),
           onChanged: (value) => setState(() => widget.fields.update('crane-purpose', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Взрыво-пожаробезопасное исполнение',
           value: widget.fields.getOptionsValue('explosion-fire-safe-crane-purpose'),
           items: widget.fields.getOptions('explosion-fire-safe-crane-purpose'),
@@ -65,21 +65,21 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           formValidator: widget.formValidator,
           validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Режим работы крана (ГОСТ 34017-2016)',
           value: widget.fields.getOptionsValue('duty-class'),
           items: widget.fields.getOptions('duty-class'),
           onChanged: (value) => setState(() => widget.fields.update('duty-class', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Климатическое исполнение',
           value: widget.fields.getOptionsValue('climatic-design-and-placement-category-crane'),
           items: widget.fields.getOptions('climatic-design-and-placement-category-crane'),
           onChanged: (value) => setState(() => widget.fields.update('climatic-design-and-placement-category-crane', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Ветровой район',
           value: widget.fields.getOptionsValue('crane-wind-area'),
           items: widget.fields.getOptions('crane-wind-area'),
@@ -100,14 +100,14 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Основной вид управления',
           value: widget.fields.getOptionsValue('basic-crane-control'),
           items: widget.fields.getOptions('basic-crane-control'),
           onChanged: (value) => setState(() => widget.fields.update('basic-crane-control', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Место расположения кабины',
           value: widget.fields.getOptionsValue('cab-location'),
           items: widget.fields.getOptions('cab-location'),

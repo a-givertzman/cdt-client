@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 ///
 /// Widget for DropDownMenuFormField 
-class DropDownMenuFormFieldWidget extends StatelessWidget {
+class DropDownFormFieldWidget extends StatelessWidget {
   final String label;
   final String value;
   final List<String> items;
@@ -15,7 +15,7 @@ class DropDownMenuFormFieldWidget extends StatelessWidget {
   /// [items] - list of values of certain field
   /// [onChanged] - function for changing value of certain field
   /// [formValidator] - function for cheking the whole form validity
-  const DropDownMenuFormFieldWidget ({
+  const DropDownFormFieldWidget ({
     super.key, 
     required this.label,
     required this.value,

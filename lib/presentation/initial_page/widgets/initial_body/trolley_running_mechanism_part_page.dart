@@ -1,7 +1,7 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
 // ignore: implementation_imports
@@ -54,21 +54,21 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Режим работы механизма передвижения тали',
           value: widget.fields.getOptionsValue('trolley-group'),
           items: widget.fields.getOptions('trolley-group'),
           onChanged: (value) => setState(() => widget.fields.update('trolley-group', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Система управления приводом',
           value: widget.fields.getOptionsValue('trolley-control-system'),
           items: widget.fields.getOptions('trolley-control-system'),
           onChanged: (value) => setState(() => widget.fields.update('trolley-control-system', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип токоподвода к грузовой тали',
           value: widget.fields.getOptionsValue('trolley-power-system'),
           items: widget.fields.getOptions('trolley-power-system'),

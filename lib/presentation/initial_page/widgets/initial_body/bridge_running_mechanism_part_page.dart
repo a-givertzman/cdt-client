@@ -1,7 +1,7 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
@@ -58,49 +58,49 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Режим работы механизма передвижения моста крана',
           value: widget.fields.getOptionsValue('crane-drive-group'),
           items: widget.fields.getOptions('crane-drive-group'),
           onChanged: (value) => setState(() => widget.fields.update('crane-drive-group', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Продолжительность включения (ПВ) механизма',
           value: widget.fields.getOptionsValue('bridge-movement-duration'),
           items: widget.fields.getOptions('bridge-movement-duration'),
           onChanged: (value) => setState(() => widget.fields.update('bridge-movement-duration', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Система управления приводом',
           value: widget.fields.getOptionsValue('bridge-control-system'),
           items: widget.fields.getOptions('bridge-control-system'),
           onChanged: (value) => setState(() => widget.fields.update('bridge-control-system', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип токоподвода к крану',
           value: widget.fields.getOptionsValue('crane-power-system'),
           items: widget.fields.getOptions('crane-power-system'),
           onChanged: (value) => setState(() => widget.fields.update('crane-power-system', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Тип механизма передвижения',
           value: widget.fields.getOptionsValue('bridge-drive-type-system'),
           items: widget.fields.getOptions('bridge-drive-type-system'),
           onChanged: (value) => setState(() => widget.fields.update('bridge-drive-type-system', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Схема привода передвижения крана',
           value: widget.fields.getOptionsValue('bridge-drive-diagram'),
           items: widget.fields.getOptions('bridge-drive-diagram'),
           onChanged: (value) => setState(() => widget.fields.update('bridge-drive-diagram', value)),
           formValidator: widget.formValidator,
         ),
-        DropDownMenuFormFieldWidget(
+        DropDownFormFieldWidget(
           label: 'Система синхронизации механизма передвижения крана',
           value: widget.fields.getOptionsValue('bridge-control-system-of-synchronous-movement'),
           items: widget.fields.getOptions('bridge-control-system-of-synchronous-movement'),
