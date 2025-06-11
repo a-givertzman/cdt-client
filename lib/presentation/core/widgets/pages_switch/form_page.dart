@@ -1,7 +1,7 @@
 ///
 /// Enum that contains indexes of Pages of the `PageView`.
 /// Used for counting the pages and switching between.
-enum Pages { first, second, third }
+enum Pages { initialPage, advnSettPageFirst, advnSettPageSecond }
 //
 extension PageOperators on Pages {
   ///
