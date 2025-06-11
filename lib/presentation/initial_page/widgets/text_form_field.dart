@@ -41,7 +41,7 @@ class TextFormFieldWidget extends StatelessWidget{
         ),
         onChanged: (value) {
           onChanged(value);
-          formValidator?.call(
+          formValidator.call(
             validator?.editFieldValidator(value)
           );
         },

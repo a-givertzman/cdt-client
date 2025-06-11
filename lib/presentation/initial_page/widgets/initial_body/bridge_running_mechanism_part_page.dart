@@ -1,10 +1,14 @@
-import 'package:cdt_client/domain/validation/only_double_validation_case.dart';
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_menu_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
-import 'package:hmi_widgets/hmi_widgets.dart';
+// ignore: implementation_imports
+import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
+// ignore: implementation_imports
+import 'package:hmi_widgets/src/core/validation/validator.dart';
+// ignore: implementation_imports
+import 'package:hmi_widgets/src/core/validation/cases/min_length_validation_case.dart';
 ///
 /// Part of [InitialPage] - the bridge running mechanism.
 /// Eleven fields.
@@ -45,14 +49,14 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           value: widget.fields.get('rated-travelling-bridge-speed'),
           onChanged: (value) => setState(() => widget.fields.update('rated-travelling-bridge-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDoubleValidationCase()]),
+          validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения моста, м/мин',
           value: widget.fields.get('slow-travelling-bridge-speed'),
           onChanged: (value) => setState(() => widget.fields.update('slow-travelling-bridge-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDoubleValidationCase()]),
+          validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
         DropDownMenuFormFieldWidget(
           label: 'Режим работы механизма передвижения моста крана',
@@ -115,7 +119,7 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           value: widget.fields.get('crane-rail-length'),
           onChanged: (value) => setState(() => widget.fields.update('crane-rail-length', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDoubleValidationCase()]),
+          validator: Validator(cases: [OnlyDigitsValidationCase()]),
         ),
         const SizedBox(height: 24),
       ],
