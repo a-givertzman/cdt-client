@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 // ignore: implementation_imports
-import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
+import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
 ///
@@ -45,14 +45,14 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
           value: widget.fields.get('rated-travelling-trolley-speed'),
           onChanged: (value) => setState(() => widget.fields.update('rated-travelling-trolley-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость передвижения тали, м/мин',
           value: widget.fields.get('slow-travelling-trolley-speed'),
           onChanged: (value) => setState(() => widget.fields.update('slow-travelling-trolley-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
           label: 'Режим работы механизма передвижения тали',

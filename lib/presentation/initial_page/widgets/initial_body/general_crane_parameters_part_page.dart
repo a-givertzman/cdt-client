@@ -4,7 +4,7 @@ import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.d
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
 // ignore: implementation_imports
-import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
+import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
 // ignore: implementation_imports
@@ -91,14 +91,14 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           value: widget.fields.get('max-use-temperature'),
           onChanged: (value) => setState(() => widget.fields.update('max-use-temperature', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Минимальная температура эксплуатации, °C',
           value: widget.fields.get('min-use-temperature'),
           onChanged: (value) => setState(() => widget.fields.update('min-use-temperature', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
           label: 'Основной вид управления',
@@ -119,21 +119,21 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           value: widget.fields.get('identical-hoists-volume'),
           onChanged: (value) => setState(() => widget.fields.update('identical-hoists-volume', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Максимальная масса крана, т',
           value: widget.fields.get('max-crane-mass'),
           onChanged: (value) => setState(() => widget.fields.update('max-crane-mass', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Допускаемое давление колеса, кН',
           value: widget.fields.get('max-wheel-load'),
           onChanged: (value) => setState(() => widget.fields.update('max-wheel-load', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         const SizedBox(height: 24),
       ],

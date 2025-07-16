@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 // ignore: implementation_imports
-import 'package:hmi_widgets/src/core/validation/cases/only_digits_validation_case.dart';
+import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
 // ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
 ///
@@ -45,14 +45,14 @@ class _HoistPartPageState extends State<HoistPartPage> {
           value: widget.fields.get('load'),
           onChanged: (value) => setState(() => widget.fields.update('load', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Высота подъёма механизма, м',
           value: widget.fields.get('lifting-height'),
           onChanged: (value) => setState(() => widget.fields.update('lifting-height', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
           label: 'Тип грузозахватного органа',
@@ -68,14 +68,14 @@ class _HoistPartPageState extends State<HoistPartPage> {
           value: widget.fields.get('rated-travelling-hoist-speed'),
           onChanged: (value) => setState(() => widget.fields.update('rated-travelling-hoist-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
           label: 'Замедленная скорость подъёма, м/мин',
           value: widget.fields.get('slow-travelling-hoist-speed'),
           onChanged: (value) => setState(() => widget.fields.update('slow-travelling-hoist-speed', value)),
           formValidator: widget.formValidator,
-          validator: Validator(cases: [OnlyDigitsValidationCase()]),
+          validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
           label: 'Тип привода механизма подъёма',
