@@ -20,7 +20,7 @@ dependencies:
   hmi_widgets:
     git:
       url: https://github.com/a-givertzman/hmi_widgets.git
-      ref: 1.3.1
+      ref: 1.3.5
   ext_rw:
     git:
       url: https://github.com/a-givertzman/dart_ext_rw.git
