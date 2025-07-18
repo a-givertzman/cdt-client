@@ -8,6 +8,7 @@ import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
+
 ///
 /// [InitialPage] body widget.
 /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).
@@ -44,93 +45,44 @@ class _InitialBodyState extends State<InitialBody> {
   //
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          //crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          spacing: uiPadding,
           children: [
-            Container(
-              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start, 
-                mainAxisSize:MainAxisSize.max,
-                children: [
-                  Container(
-                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
-                    child: Padding(
-                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          HoistPartPage(fields: widget.fields, formValidator: _formValidator),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
-                    child: Padding(
-                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TrolleyRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: Setting('ui-paddingDouble').toDouble),
-            Container(
-              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start, 
-                mainAxisSize:MainAxisSize.max,
-                children: [
-                  Container(
-                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width/2),
-                    child: Padding(
-                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          BridgeRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),                 
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width/2),
-                    child: Padding(
-                      padding: EdgeInsets.all(Setting('ui-padding').toDouble),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          GeneralCraneParametersPartPage(fields: widget.fields, formValidator: _formValidator),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              constraints:BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
-              child: Padding(
-                padding: EdgeInsets.all(Setting('ui-padding').toDouble),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center, 
-                  mainAxisSize: MainAxisSize.min,
-                    children: [
-                      OverallDimensionsCranePartPage(fields: widget.fields, formValidator: _formValidator),
-                    ],
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: uiPadding,
+              children: [
+                SizedBox(height: uiPadding),
+                Expanded(
+                  child: HoistPartPage(fields: widget.fields, formValidator: _formValidator),
                 ),
-              ),
+                Expanded(
+                  child: TrolleyRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
+                ),
+                Expanded(
+                  child: BridgeRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
+                ),
+                SizedBox(height: uiPadding),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start, 
+              spacing: uiPadding,
+              children: [
+                SizedBox(height: uiPadding),
+                Expanded(
+                  child: GeneralCraneParametersPartPage(fields: widget.fields, formValidator: _formValidator),
+                ),
+                Expanded(
+                  child: OverallDimensionsCranePartPage(fields: widget.fields, formValidator: _formValidator),
+                ),
+                SizedBox(height: uiPadding),
+              ],
             ),
           ],
         ),
@@ -145,36 +97,7 @@ class _InitialBodyState extends State<InitialBody> {
     widget.onValidationChanged?.call(isValid);
   }
 }
-// ElevatedButton(
-              //   onPressed: _validateForm,
-              //   child: const Text('Сохранить'),
-              // ),
-              // SizedBox(
-              //   width: MediaQuery.sizeOf(context).width * 0.25,
-              //   child: InputDecorator(
-              //     decoration: InputDecoration(
-              //       enabledBorder: OutlineInputBorder(),
-              //     ),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Text(
-              //           'Name of the field',
-              //           style: Theme.of(context).textTheme.bodyLarge,
-              //         ),
-              //         Checkbox(
-              //           value: _checkboxValue,
-              //           onChanged: (value) {
-              //             setState(() {
-              //               _checkboxValue = value ?? false;
-              //             });
-              //           },
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-
+//
 final sgocInit = {
   // Hoist parameters
   'load': '5.0', // load
@@ -203,7 +126,12 @@ final sgocInit = {
   },
   'lifting-mechanism-drive-type': {   // lifting mechanism drive type
     'value': "HD3",
-    'options': const ['HD1', 'HD2', 'HD3', 'HD4', 'HD5'], // lifting mechanism drive type options
+    'options': const 
+    ['нет замедленной скорости', 
+    'постоянная замедленная скорость', 
+    'постоянная замедленная скорости до отрыва груза от земли', 
+    'система бесступенчатого управления переменной скоростью', 
+    'после предварительного натяжения разгон до выбранной скорости'], // lifting mechanism drive type options
   },
   'type-of-lifted-load': {   // type of lifted load
     'value': "safe",

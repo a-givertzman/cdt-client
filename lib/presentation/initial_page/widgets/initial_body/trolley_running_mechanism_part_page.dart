@@ -2,10 +2,10 @@ import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
-// ignore: implementation_imports
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
+
 ///
 /// Part of [InitialPage] - the trolley running mechanism.
 /// FIve fields.
@@ -32,14 +32,14 @@ class TrolleyRunningMechanismPartPage extends StatefulWidget {
 class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanismPartPage> {
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    final uiPaddingDouble = const Setting('ui-paddingDouble').toDouble;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: uiPadding,
       children: [
-        const Text(
-          'Параметры механизма передвижения грузовой тали',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: uiPaddingDouble),
+        Text('Параметры механизма передвижения грузовой тали'),
         NumberFormFieldWidget(
           label: 'Номинальная скорость передвижения тали, м/мин',
           value: widget.fields.get('rated-travelling-trolley-speed'),
@@ -75,7 +75,6 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
           onChanged: (value) => setState(() => widget.fields.update('ttrolley-power-system', value)),
           formValidator: widget.formValidator,
         ),
-        const SizedBox(height: 24),
       ],
     );
   }

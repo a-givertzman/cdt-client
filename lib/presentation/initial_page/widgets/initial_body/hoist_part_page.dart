@@ -2,10 +2,10 @@ import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
-// ignore: implementation_imports
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
+
 ///
 /// Part of [InitialPage] - hoist.
 /// First ten fields.
@@ -32,14 +32,14 @@ class HoistPartPage extends StatefulWidget {
 class _HoistPartPageState extends State<HoistPartPage> {
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    final uiPaddingDouble = const Setting('ui-paddingDouble').toDouble;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: uiPadding,
       children: [
-        const Text(
-          'Параметры механизма подъёма',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: uiPaddingDouble),
+        Text('Параметры механизма подъёма'),
         NumberFormFieldWidget(
           label: 'Грузоподъёмность механизма, т',
           value: widget.fields.get('load'),
@@ -112,7 +112,6 @@ class _HoistPartPageState extends State<HoistPartPage> {
           onChanged: (value) => setState(() => widget.fields.update('type-of-lifted-load', value)),
           formValidator: widget.formValidator,
         ),
-        const SizedBox(height: 24),
       ],
     );
   }

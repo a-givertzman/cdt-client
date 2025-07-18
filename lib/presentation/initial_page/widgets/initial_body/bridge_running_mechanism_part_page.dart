@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
-// ignore: implementation_imports
+import 'package:hmi_core/hmi_core_translate.dart';
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/min_length_validation_case.dart';
+
 ///
 /// Part of [InitialPage] - the bridge running mechanism.
 /// Eleven fields.
@@ -32,18 +32,17 @@ class BridgeRunningMechanismPartPage extends StatefulWidget {
   State<BridgeRunningMechanismPartPage> createState() => _BridgeRunningMechanismPartPageState();
 }
 //
-// BridgeRunningMechanismPartPage.dart
 class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismPartPage> {
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    final uiPaddingDouble = const Setting('ui-paddingDouble').toDouble;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: uiPadding,
       children: [
-        const Text(
-          'Параметры механизма передвижения крана',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: uiPaddingDouble),
+        Text('Параметры механизма передвижения крана'.loc),
         NumberFormFieldWidget(
           label: 'Номинальная скорость передвижения моста, м/мин',
           value: widget.fields.get('rated-travelling-bridge-speed'),
@@ -121,7 +120,6 @@ class _BridgeRunningMechanismPartPageState extends State<BridgeRunningMechanismP
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
-        const SizedBox(height: 24),
       ],
     );
   }

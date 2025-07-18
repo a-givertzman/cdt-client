@@ -1,9 +1,8 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-// ignore: implementation_imports
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
 
 ///
@@ -32,14 +31,14 @@ class OverallDimensionsCranePartPage extends StatefulWidget {
 class _OverallDimensionsCranePartPageState extends State<OverallDimensionsCranePartPage> {
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    final uiPaddingDouble = const Setting('ui-paddingDouble').toDouble;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: uiPadding,
       children: [
-        const Text(
-          'Габаритные размеры крана',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: uiPaddingDouble),
+        Text('Габаритные размеры крана'),
         NumberFormFieldWidget(
           label: 'Пролёт крана, м',
           value: widget.fields.get('span'),

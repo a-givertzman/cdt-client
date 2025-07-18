@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
+
 ///
 /// Widget for NumberFormField
 class NumberFormFieldWidget extends StatelessWidget{
@@ -26,30 +27,28 @@ class NumberFormFieldWidget extends StatelessWidget{
     this.formValidator,
     this.validator,
   });
-    // controller = TextEditingController(text: value);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: TextFormField(
-        initialValue: value,
-        decoration: InputDecoration(
-          labelText: label,
-          focusedBorder: OutlineInputBorder(),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2.0),
-          ),
-          focusedErrorBorder: OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(),
+    return TextFormField(
+      initialValue: value,
+      decoration: InputDecoration(
+        labelText: label,
+        focusedBorder: OutlineInputBorder(),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
         ),
-        keyboardType: keyboardType,
-        onChanged: (value) {
-          formValidator?.call(
-            validator?.editFieldValidator(value)
-          );
-        },
-        validator: (value) => validator?.editFieldValidator(value),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+        ),
+        enabledBorder: OutlineInputBorder(),
       ),
+      keyboardType: keyboardType,
+      onChanged: (value) {
+        formValidator?.call(
+          validator?.editFieldValidator(value)
+        );
+      },
+      validator: (value) => validator?.editFieldValidator(value),
     );
   }
 }

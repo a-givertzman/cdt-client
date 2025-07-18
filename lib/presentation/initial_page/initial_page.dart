@@ -33,13 +33,12 @@ class InitialPage extends StatefulWidget {
 }
 //
 class _InitialPageState extends State<InitialPage> {
-  //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Initialization'.loc),
+        title: Text('Initialization'.loc, style: Theme.of(context).textTheme.headlineLarge),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),

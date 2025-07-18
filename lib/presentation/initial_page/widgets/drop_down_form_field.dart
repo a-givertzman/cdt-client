@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 ///
 /// Widget for DropDownMenuFormField 
 class DropDownFormFieldWidget extends StatelessWidget {
@@ -26,32 +27,32 @@ class DropDownFormFieldWidget extends StatelessWidget {
   //
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: DropdownButtonFormField<String>(
-        value: items.contains(value) ? value : null,
-        decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.red, width: 2.0),
+    return DropdownButtonFormField<String>(
+      value: items.contains(value) ? value : null,
+      decoration: InputDecoration(
+        labelText: label,
+        focusedBorder: OutlineInputBorder(),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+        ),
+        enabledBorder: OutlineInputBorder(),
+      ),
+      items: [
+        DropdownMenuItem<String>(value: null, child: Text('-')),
+        ...items.map(
+          (dynamic item) => DropdownMenuItem<String>(
+            value: item,
+            child: Text(item.toString()),
           ),
         ),
-        items: [
-          DropdownMenuItem<String>(value: null, child: Text('-')),
-          ...items.map(
-            (dynamic item) => DropdownMenuItem<String>(
-              value: item,
-              child: Text(item.toString()),
-            ),
-          ),
-        ],
-        onChanged: (dynamic value) {
-          onChanged(value);
-          formValidator(null);
-        },
-        // validator: emptinessValidator.validateNotEmpty,
-      ),
+      ],
+      onChanged: (dynamic value) {
+        onChanged(value);
+        formValidator(null);
+      },
     );
   }
 }

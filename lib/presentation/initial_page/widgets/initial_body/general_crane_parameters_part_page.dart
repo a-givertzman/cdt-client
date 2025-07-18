@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
-// ignore: implementation_imports
+import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/validator.dart';
-// ignore: implementation_imports
 import 'package:hmi_widgets/src/core/validation/cases/min_length_validation_case.dart';
+
 ///
 /// Part of [InitialPage] - the general crane parametrs.
 /// Thirteen fields.
@@ -32,18 +31,17 @@ class GeneralCraneParametersPartPage extends StatefulWidget {
   State<GeneralCraneParametersPartPage> createState() => _GeneralCraneParametersPartPageState();
 }
 //
-// GeneralCraneParametersPartPage.dart
 class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersPartPage> {
   @override
   Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    final uiPaddingDouble = const Setting('ui-paddingDouble').toDouble;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: uiPadding,
       children: [
-        const Text(
-          'Общие параметры крана',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
+        SizedBox(height: uiPaddingDouble),
+        Text('Общие параметры крана'),
         DropDownFormFieldWidget(
           label: 'Исполнение крана',
           value: widget.fields.getOptionsValue('crane-purpose'),
@@ -135,7 +133,6 @@ class _GeneralCraneParametersPartPageState extends State<GeneralCraneParametersP
           formValidator: widget.formValidator,
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
-        const SizedBox(height: 24),
       ],
     );
   }
