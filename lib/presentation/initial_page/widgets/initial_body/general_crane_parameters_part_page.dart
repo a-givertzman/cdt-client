@@ -1,8 +1,8 @@
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/number_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/drop_down_form_field.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/text_form_field.dart';
+import 'package:cdt_client/presentation/core/widgets/form_fields/number_form_field.dart';
+import 'package:cdt_client/presentation/core/widgets/form_fields/drop_down_form_field.dart';
+import 'package:cdt_client/presentation/core/widgets/form_fields/text_form_field.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
 import 'package:hmi_widgets/src/core/validation/validator.dart';
