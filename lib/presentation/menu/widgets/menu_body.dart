@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cdt_client/presentation/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:hmi_core/hmi_core.dart';
@@ -6,7 +7,6 @@ import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:cdt_client/presentation/menu/widgets/menu_grid.dart';
 import 'package:cdt_client/presentation/menu/widgets/menu_navigation_button.dart';
 import 'package:cdt_client/presentation/home_page/home_page.dart';
-import 'package:cdt_client/presentation/core/widgets/pages_switch/pages_switch_with_bottom_indication.dart';
 ///
 /// Builds menu body using current user.
 /// Menu body is a grid that contains
@@ -83,7 +83,7 @@ class MenuBody extends StatelessWidget {
                       caption: const Localized('Initial page').v,
                       textStyle: textStyleScaled,
                       routeBuilder: () => MaterialPageRoute(
-                        builder: (context) => PagesSwitch(
+                        builder: (context) => InitialPage(
                           users: _users,
                           //themeSwitch: _themeSwitch,
                         ),

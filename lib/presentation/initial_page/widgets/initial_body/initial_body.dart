@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
+import 'package:cdt_client/presentation/core/widgets/pages_switch/pages_switch_with_bottom_indication.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
-import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
-import 'package:hmi_networking/hmi_networking.dart';
-import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
+import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
@@ -12,91 +12,194 @@ import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge
 ///
 /// [InitialPage] body widget.
 /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).
-/// Access to edit may be restricted depends on user priveleges.
+/// Access to edit may be restricted depends on user privileges.
 class InitialBody extends StatefulWidget {
-  final Pages form;
   // final Map<Pages, Map> pageData;
-  final AppUserStacked users;
-  final SgocInit fields;
-  final Function(bool isValid)? onValidationChanged;
+  final SgocInit _fields;
   ///
   /// The body of the [InitialPage] widget.
   ///
-  /// [form] - current form
-  /// [fields] - temprorary example of InitialPage content
-  /// [pageData] - content of all forms
-  /// [users] - all stored users
-  /// [onValidationChanged] - callback for checking is form valid
+  /// [_fields] - temporary example of InitialPage content
   InitialBody({
     super.key,
-    required this.form,
     //required this.pageData,
-    required this.users,
-    required this.onValidationChanged,
-  }):
-    fields = SgocInit(sgocInit);
+  })  : _fields = SgocInit(sgocInit);
   //
   @override
   State<InitialBody> createState() => _InitialBodyState();
 }
 //
 class _InitialBodyState extends State<InitialBody> {
-  final _formKey = GlobalKey<FormState>();
+  bool _isFirstPageValid = false;
+  bool _isSecondPageValid = false;
+  int _currentPageIndex = 0;
+  //
+  @override
+  Widget build(BuildContext context) {
+    return PagesSwitch(
+      pages: [
+        PageConfig(
+          id: 'main_mechanisms',
+          builder: (context) => _FirstPage(
+            fields: widget._fields,
+            onValidationChanged: (bool isValid) => 
+              setState(() {
+                _isFirstPageValid = isValid;
+                _currentPageIndex = 0;
+              }),
+          ),
+        ),
+        PageConfig(
+          id: 'general_parameters',
+          builder: (context) => _SecondPage(
+            fields: widget._fields,
+            onValidationChanged: (bool isValid) =>
+             setState(() {
+               _isSecondPageValid = isValid;
+               _currentPageIndex = 1;
+             }),
+          ),
+        ),
+      ],
+      isPageValid: () {
+        if (_currentPageIndex == 0) return _isFirstPageValid;
+        if (_currentPageIndex == 1) return _isSecondPageValid;
+        return false;
+      },
+      formsSubmission: () => 
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Данные сохранены'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        ),
+    );
+  }
+}
+//
+class _FirstPage extends StatefulWidget {
+  final SgocInit _fields;
+  final void Function(bool) _onValidationChanged;
+  //
+  const _FirstPage({
+    required SgocInit fields,
+    required void Function(bool) onValidationChanged,
+  })  : _onValidationChanged = onValidationChanged, 
+        _fields = fields;
+  //
+  @override
+  State<_FirstPage> createState() => _FirstPageState();
+}
+//
+class _FirstPageState extends State<_FirstPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //
   @override
   Widget build(BuildContext context) {
     final uiPadding = const Setting('ui-padding').toDouble;
+    //
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        onChanged: _updateFormValidity,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           spacing: uiPadding,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: uiPadding,
-              children: [
-                SizedBox(height: uiPadding),
-                Expanded(
-                  child: HoistPartPage(fields: widget.fields, formValidator: _formValidator),
-                ),
-                Expanded(
-                  child: TrolleyRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
-                ),
-                Expanded(
-                  child: BridgeRunningMechanismPartPage(fields: widget.fields, formValidator: _formValidator),
-                ),
-                SizedBox(height: uiPadding),
-              ],
+            SizedBox(width: uiPadding),
+            Expanded(
+              child: HoistPartPage(fields: widget._fields, formValidator: _formValidator),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start, 
-              spacing: uiPadding,
-              children: [
-                SizedBox(height: uiPadding),
-                Expanded(
-                  child: GeneralCraneParametersPartPage(fields: widget.fields, formValidator: _formValidator),
-                ),
-                Expanded(
-                  child: OverallDimensionsCranePartPage(fields: widget.fields, formValidator: _formValidator),
-                ),
-                SizedBox(height: uiPadding),
-              ],
+            Expanded(
+              child: TrolleyRunningMechanismPartPage(fields: widget._fields, formValidator: _formValidator),
             ),
+            Expanded(
+              child: BridgeRunningMechanismPartPage(fields: widget._fields, formValidator: _formValidator),
+            ),
+            SizedBox(width: uiPadding),
           ],
         ),
       ),
     );
   }
-  ///
-  /// Check if all fields in form are not empty
-  /// and notificate [PagesSwitch].
-  void _formValidator(String? validationResult) {
-    final isValid = (_formKey.currentState?.validate() ?? false) && (validationResult == null || validationResult.isEmpty);
-    widget.onValidationChanged?.call(isValid);
+  //
+  String? _formValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    return null;
+  }
+  //
+  void _updateFormValidity() {
+    final isValid = _formKey.currentState?.validate() ?? false;
+    widget._onValidationChanged(isValid);
   }
 }
+//
+class _SecondPage extends StatefulWidget {
+  final SgocInit _fields;
+  final void Function(bool) _onValidationChanged;
+  //
+  const _SecondPage({
+    required SgocInit fields,
+    required void Function(bool) onValidationChanged,
+  })  : _onValidationChanged = onValidationChanged, 
+        _fields = fields;
+  //
+  @override
+  State<_SecondPage> createState() => _SecondPageState();
+}
+//
+class _SecondPageState extends State<_SecondPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //
+  @override
+  Widget build(BuildContext context) {
+    final uiPadding = const Setting('ui-padding').toDouble;
+    //
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        onChanged: _updateFormValidity,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: uiPadding,
+          children: [
+            SizedBox(width: uiPadding),
+            Expanded(
+              child: GeneralCraneParametersPartPage(fields: widget._fields, formValidator: _formValidator),
+            ),
+            Expanded(
+              child: OverallDimensionsCranePartPage(fields: widget._fields, formValidator: _formValidator),
+            ),
+            SizedBox(height: uiPadding),
+          ],
+        ),
+      ),
+    );
+  }
+  //
+  String? _formValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Поле обязательно для заполнения';
+    }
+    return null;
+  }
+  //
+  void _updateFormValidity() {
+    final isValid = _formKey.currentState?.validate() ?? false;
+    widget._onValidationChanged(isValid);
+  }
+}
+//
+//
+//
 //
 final sgocInit = {
   // Hoist parameters
