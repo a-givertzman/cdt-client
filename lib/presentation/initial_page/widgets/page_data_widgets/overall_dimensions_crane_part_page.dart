@@ -5,7 +5,7 @@ import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [InitialPage] - the overall dimensions of the crane.
+/// Part of [SecondPage] - the overall dimensions of the crane.
 /// Seven fields.
 class OverallDimensionsCranePartPage extends StatefulWidget {
   final SgocInit _fields;

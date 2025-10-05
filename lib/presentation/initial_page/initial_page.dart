@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/initial_body.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/initial_body.dart';
 ///
 /// Page for initialization params of the crane.
 /// Builds page on the base of list of users 

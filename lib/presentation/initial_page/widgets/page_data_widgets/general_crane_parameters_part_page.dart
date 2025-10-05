@@ -8,7 +8,7 @@ import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 
 ///
-/// Part of [InitialPage] - the general crane parameters.
+/// Part of [SecondPage] - the general crane parameters.
 /// Thirteen fields.
 class GeneralCraneParametersPartPage extends StatefulWidget {
   final SgocInit _fields;
