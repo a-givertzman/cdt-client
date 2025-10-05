@@ -62,7 +62,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _currentPageIndex == 0
-                ? const SizedBox(width: 100)
+                ? const SizedBox(width: 80)
                 : ElevatedButton(
                     onPressed: () => _slideBak(),
                     child: Text('Back'.loc),
