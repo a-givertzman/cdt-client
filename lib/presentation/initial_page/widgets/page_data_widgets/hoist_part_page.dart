@@ -6,7 +6,7 @@ import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [InitialPage] - hoist.
+/// Part of [FirstPage] - hoist.
 /// First ten fields.
 class HoistPartPage extends StatefulWidget {
   final SgocInit _fields;

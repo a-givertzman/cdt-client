@@ -1,21 +1,15 @@
+import 'package:cdt_client/presentation/initial_page/widgets/first_page.dart';
+import 'package:cdt_client/presentation/initial_page/widgets/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/infrastructure/bc/sgoc_init.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/pages_switch_with_bottom_indication.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
-import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
-import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
-
 ///
 /// [InitialPage] body widget.
-/// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md).
+/// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/Docs-hoist-mechanism-Hoist/docs/input_output_data.md).
 /// Access to edit may be restricted depends on user privileges.
 class InitialBody extends StatefulWidget {
-  // final Map<Pages, Map> pageData;
   final SgocInit _fields;
   ///
   /// The body of the [InitialPage] widget.
@@ -23,7 +17,6 @@ class InitialBody extends StatefulWidget {
   /// [_fields] - temporary example of InitialPage content
   InitialBody({
     super.key,
-    //required this.pageData,
   })  : _fields = SgocInit(sgocInit);
   //
   @override
@@ -41,7 +34,7 @@ class _InitialBodyState extends State<InitialBody> {
       pages: [
         PageConfig(
           name: 'main_mechanisms',
-          builder: (context) => _FirstPage(
+          builder: (context) => FirstPage(
             fields: widget._fields,
             onValidationChanged: (bool isValid) => 
               setState(() {
@@ -52,7 +45,7 @@ class _InitialBodyState extends State<InitialBody> {
         ),
         PageConfig(
           name: 'general_parameters',
-          builder: (context) => _SecondPage(
+          builder: (context) => SecondPage(
             fields: widget._fields,
             onValidationChanged: (bool isValid) =>
              setState(() {
@@ -81,107 +74,6 @@ class _InitialBodyState extends State<InitialBody> {
           ),
         ),
     );
-  }
-}
-//
-class _FirstPage extends StatefulWidget {
-  final SgocInit _fields;
-  final void Function(bool) _onValidationChanged;
-  //
-  const _FirstPage({
-    required SgocInit fields,
-    required void Function(bool) onValidationChanged,
-  })  : _onValidationChanged = onValidationChanged, 
-        _fields = fields;
-  //
-  @override
-  State<_FirstPage> createState() => _FirstPageState();
-}
-//
-class _FirstPageState extends State<_FirstPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  //
-  @override
-  Widget build(BuildContext context) {
-    final uiPadding = const Setting('ui-padding').toDouble;
-    //
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        onChanged: _updateFormValidity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: uiPadding,
-          children: [
-            SizedBox(width: uiPadding),
-            Expanded(
-              child: HoistPartPage(fields: widget._fields),
-            ),
-            Expanded(
-              child: TrolleyRunningMechanismPartPage(fields: widget._fields),
-            ),
-            Expanded(
-              child: BridgeRunningMechanismPartPage(fields: widget._fields),
-            ),
-            SizedBox(width: uiPadding),
-          ],
-        ),
-      ),
-    );
-  }
-  //
-  void _updateFormValidity() {
-    final isValid = _formKey.currentState?.validate() ?? false;
-    widget._onValidationChanged(isValid);
-  }
-}
-//
-class _SecondPage extends StatefulWidget {
-  final SgocInit _fields;
-  final void Function(bool) _onValidationChanged;
-  //
-  const _SecondPage({
-    required SgocInit fields,
-    required void Function(bool) onValidationChanged,
-  })  : _onValidationChanged = onValidationChanged, 
-        _fields = fields;
-  //
-  @override
-  State<_SecondPage> createState() => _SecondPageState();
-}
-//
-class _SecondPageState extends State<_SecondPage> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  //
-  @override
-  Widget build(BuildContext context) {
-    final uiPadding = const Setting('ui-padding').toDouble;
-    //
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        onChanged: _updateFormValidity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: uiPadding,
-          children: [
-            SizedBox(width: uiPadding),
-            Expanded(
-              child: GeneralCraneParametersPartPage(fields: widget._fields),
-            ),
-            Expanded(
-              child: OverallDimensionsCranePartPage(fields: widget._fields),
-            ),
-            SizedBox(height: uiPadding),
-          ],
-        ),
-      ),
-    );
-  }
-  //
-  void _updateFormValidity() {
-    final isValid = _formKey.currentState?.validate() ?? false;
-    widget._onValidationChanged(isValid);
   }
 }
 //

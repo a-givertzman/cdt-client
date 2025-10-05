@@ -271,7 +271,18 @@
 
 
 
-
+    "Back": [
+        "Back",
+        "Назад"
+    ],
+    "Next": [
+        "Next",
+        "Далее"
+    ],
+    "Done": [
+        "Done",
+        "Готово"
+    ],
     "Initialization": [
         "Initialization", 
         "Инициализация"

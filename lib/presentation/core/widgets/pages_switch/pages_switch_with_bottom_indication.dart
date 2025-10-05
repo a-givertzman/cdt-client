@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.dart';
+import 'package:hmi_core/hmi_core_app_settings.dart';
+import 'package:hmi_core/hmi_core_translate.dart';
 ///
 /// Widget that provides switching between pages.
 class PagesSwitch extends StatefulWidget {
@@ -44,7 +46,8 @@ class _PagesSwitchState extends State<PagesSwitch> {
   //
   @override
   Widget build(BuildContext context) {
-    final iconSize = Theme.of(context).iconTheme.size ?? 24.0;
+    final iconSize = Theme.of(context).iconTheme.size ?? 28.0;
+    final padding = const Setting('blockPadding').toDouble;
     final isCurrentFormValid = widget._isPageValid();
     return Scaffold(
       body: PageView(
@@ -54,7 +57,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
         children: widget._pages.map((page) => page.builder(context)).toList(),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(padding),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -62,7 +65,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
                 ? const SizedBox(width: 100)
                 : ElevatedButton(
                     onPressed: () => _slideBak(),
-                    child: const Text('Назад'),
+                    child: Text('Back'.loc),
                   ),
             Row(
               children: widget._pages.asMap().entries.map(
@@ -74,7 +77,7 @@ class _PagesSwitchState extends State<PagesSwitch> {
                       ? Theme.of(context).primaryColor
                       : Colors.grey,
                   iconSize: _currentPageIndex == entry.key
-                      ? iconSize * 1.3
+                      ? iconSize
                       : null,
                   icon: const Icon(Icons.circle),
                 )
@@ -85,13 +88,13 @@ class _PagesSwitchState extends State<PagesSwitch> {
                     onPressed: () => isCurrentFormValid 
                         ? widget._formsSubmission()
                         : null,
-                    child: const Text('Готово'),
+                    child: Text('Done'.loc),
                   )
                 : ElevatedButton(
                     onPressed: () => isCurrentFormValid
                         ? _slideFwd()
                         : null,
-                    child: const Text('Далее'),
+                    child: Text('Next'.loc),
                   ),
           ],
         ),

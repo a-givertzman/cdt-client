@@ -7,7 +7,7 @@ import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [InitialPage] - the bridge running mechanism.
+/// Part of [FirstPage] - the bridge running mechanism.
 /// Eleven fields.
 class BridgeRunningMechanismPartPage extends StatefulWidget {
   final SgocInit _fields;
