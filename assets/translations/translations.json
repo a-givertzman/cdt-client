@@ -489,7 +489,11 @@
         "Тип привода механизма подъёма"
     ],
     "Type of lifted load": [
-    "Type of lifted load", 
-    "Тип поднимаемого груза"
+        "Type of lifted load", 
+        "Тип поднимаемого груза"
+    ],
+    "Result page": [
+        "Result page",
+        "Страница результатов"
     ]
 }
