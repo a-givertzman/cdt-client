@@ -2,9 +2,9 @@ import 'package:hmi_core/hmi_core_failure.dart';
 import 'package:hmi_core/hmi_core_log.dart';
 import 'package:hmi_core/hmi_core_result.dart';
 ///
-/// Storage parametrs for initialization Single Girder Overhead Crane
+/// Storage parameters for initialization Single Girder Overhead Crane
 /// 
-/// [CDT Docs refeerence](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md)
+/// [CDT Docs reference](https://github.com/a-givertzman/cdt-math/blob/master/design/docs/algorithm_single_ginger_overhead_crane/part01_initialization/chapter01_initialData/chapter01_initialData.md)
 class SgocInit {
   final Log _log;
   final Map<String, dynamic> _map;
@@ -50,7 +50,8 @@ class SgocInit {
     }
     final val = _map[key];
     if (val != null && val is Map) {
-      (_map[key] as Map).update('value', value);
+      //(_map[key] as Map).update('value', value);
+      _map[key]['value'] = value;
       return Ok(null);
     }
     //_map.update(key,value, ifAbsent: () => value);

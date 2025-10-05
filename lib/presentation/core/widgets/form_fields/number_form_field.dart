@@ -2,37 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 
 ///
-/// Widget for NumberFormField
+/// Widget for form number field.
 class NumberFormFieldWidget extends StatelessWidget{
-  // final TextEditingController controller;
-  final String label;
-  final String value;
-  final TextInputType? keyboardType;
-  final Function(dynamic)? onChanged;
-  final Function(String?)? formValidator;
-  final Validator? validator;
+  final String _label;
+  final String _value;
+  final Function(dynamic) _onChanged;
+  final TextInputType? _keyboardType;
+  final Validator? _validator;
   ///
-  /// The body of NumberFormField
+  /// Widget for form number field.
+  /// Takes user input and validates it
+  /// by [validator] func.
   /// 
-  /// [label] - lable of certain field
-  /// [value] - current value of certain field
-  /// [onChanged] - function for changing value of certain field
-  /// [formValidator] - function for cheking the whole form validity
+  /// - [label] - label of certain field
+  /// - [value] - current value of certain field
+  /// - [onChanged] - function for changing value of certain field
+  /// - [validator] -  function for validating certain field
   const NumberFormFieldWidget ({
     super.key, 
-    required this.label,
-    required this.value,
-    this.keyboardType,
-    this.onChanged,
-    this.formValidator,
-    this.validator,
-  });
+    required String label,
+    required String value,
+    required dynamic Function(dynamic) onChanged,
+    TextInputType? keyboardType,
+    Validator? validator,
+  })  : _value = value, 
+        _label = label,
+        _validator = validator, _onChanged = onChanged, 
+        _keyboardType = keyboardType;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: value,
+      initialValue: _value,
       decoration: InputDecoration(
-        labelText: label,
+        labelText: _label,
         focusedBorder: OutlineInputBorder(),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
@@ -42,13 +44,9 @@ class NumberFormFieldWidget extends StatelessWidget{
         ),
         enabledBorder: OutlineInputBorder(),
       ),
-      keyboardType: keyboardType,
-      onChanged: (value) {
-        formValidator?.call(
-          validator?.editFieldValidator(value)
-        );
-      },
-      validator: (value) => validator?.editFieldValidator(value),
+      keyboardType: _keyboardType,
+      onChanged: (value) => _onChanged(value),
+      validator: (value) => _validator?.editFieldValidator(value),
     );
   }
 }
