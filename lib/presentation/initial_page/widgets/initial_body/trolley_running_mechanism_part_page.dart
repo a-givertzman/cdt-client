@@ -1,30 +1,23 @@
-import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
+import 'package:cdt_client/infrastructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/form_fields/number_form_field.dart';
 import 'package:cdt_client/presentation/core/widgets/form_fields/drop_down_form_field.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
-import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-import 'package:hmi_widgets/src/core/validation/validator.dart';
-
+import 'package:hmi_core/hmi_core_translate.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - the trolley running mechanism.
 /// FIve fields.
 class TrolleyRunningMechanismPartPage extends StatefulWidget {
-  //final AppUserStacked users;
-  final SgocInit fields;
-  final Function(String?) formValidator;
+  final SgocInit _fields;
   ///
   /// The body of the trolley running mechanism.
   ///
-  /// [users] - all stored users
-  /// [fields] - temprorary example of InitialPage content
-  /// [formValidator] - function for cheking the whole form validity
+  /// [fields] - temporary example of InitialPage content
   const TrolleyRunningMechanismPartPage({
     super.key,
-    //required this.users,
-    required this.fields,
-    required this.formValidator,
-  });
+    required SgocInit fields,
+  })  : _fields = fields;
   @override
   State<TrolleyRunningMechanismPartPage> createState() => _TrolleyRunningMechanismPartPageState();
 }
@@ -39,41 +32,39 @@ class _TrolleyRunningMechanismPartPageState extends State<TrolleyRunningMechanis
       spacing: uiPadding,
       children: [
         SizedBox(height: uiPaddingDouble),
-        Text('Параметры механизма передвижения грузовой тали'),
+        Text('Parameters of the hoist travel mechanism'.loc),
         NumberFormFieldWidget(
-          label: 'Номинальная скорость передвижения тали, м/мин',
-          value: widget.fields.get('rated-travelling-trolley-speed'),
-          onChanged: (value) => setState(() => widget.fields.update('rated-travelling-trolley-speed', value)),
-          formValidator: widget.formValidator,
+          label: 'Rated traveling trolley speed, m/min'.loc,
+          value: widget._fields.get('rated-traveling-trolley-speed'),
+          onChanged: (value) => setState(() => widget._fields.update('rated-traveling-trolley-speed', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
-          label: 'Замедленная скорость передвижения тали, м/мин',
-          value: widget.fields.get('slow-travelling-trolley-speed'),
-          onChanged: (value) => setState(() => widget.fields.update('slow-travelling-trolley-speed', value)),
-          formValidator: widget.formValidator,
+          label: 'Slow traveling trolley speed, m/min'.loc,
+          value: widget._fields.get('slow-traveling-trolley-speed'),
+          onChanged: (value) => setState(() => widget._fields.update('slow-traveling-trolley-speed', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
-          label: 'Режим работы механизма передвижения тали',
-          value: widget.fields.getOptionsValue('trolley-group'),
-          items: widget.fields.getOptions('trolley-group'),
-          onChanged: (value) => setState(() => widget.fields.update('trolley-group', value)),
-          formValidator: widget.formValidator,
+          label: 'Trolley group'.loc,
+          value: widget._fields.getOptionsValue('trolley-group'),
+          items: widget._fields.getOptions('trolley-group'),
+          onChanged: (value) => setState(() => widget._fields.update('trolley-group', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Система управления приводом',
-          value: widget.fields.getOptionsValue('trolley-control-system'),
-          items: widget.fields.getOptions('trolley-control-system'),
-          onChanged: (value) => setState(() => widget.fields.update('trolley-control-system', value)),
-          formValidator: widget.formValidator,
+          label: 'Trolley control system'.loc,
+          value: widget._fields.getOptionsValue('trolley-control-system'),
+          items: widget._fields.getOptions('trolley-control-system'),
+          onChanged: (value) => setState(() => widget._fields.update('trolley-control-system', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Тип токоподвода к грузовой тали',
-          value: widget.fields.getOptionsValue('trolley-power-system'),
-          items: widget.fields.getOptions('trolley-power-system'),
-          onChanged: (value) => setState(() => widget.fields.update('ttrolley-power-system', value)),
-          formValidator: widget.formValidator,
+          label: 'Trolley power system'.loc,
+          value: widget._fields.getOptionsValue('trolley-power-system'),
+          items: widget._fields.getOptions('trolley-power-system'),
+          onChanged: (value) => setState(() => widget._fields.update('trolley-power-system', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
       ],
     );

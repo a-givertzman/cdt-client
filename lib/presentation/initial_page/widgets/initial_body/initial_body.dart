@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
+import 'package:cdt_client/infrastructure/bc/sgoc_init.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/pages_switch_with_bottom_indication.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/general_crane_parameters_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/overall_dimensions_crane_part_page.dart';
@@ -8,6 +8,7 @@ import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.da
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/hoist_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/trolley_running_mechanism_part_page.dart';
 import 'package:cdt_client/presentation/initial_page/widgets/initial_body/bridge_running_mechanism_part_page.dart';
+import 'package:hmi_core/hmi_core_translate.dart';
 
 ///
 /// [InitialPage] body widget.
@@ -39,7 +40,7 @@ class _InitialBodyState extends State<InitialBody> {
     return PagesSwitch(
       pages: [
         PageConfig(
-          id: 'main_mechanisms',
+          name: 'main_mechanisms',
           builder: (context) => _FirstPage(
             fields: widget._fields,
             onValidationChanged: (bool isValid) => 
@@ -50,7 +51,7 @@ class _InitialBodyState extends State<InitialBody> {
           ),
         ),
         PageConfig(
-          id: 'general_parameters',
+          name: 'general_parameters',
           builder: (context) => _SecondPage(
             fields: widget._fields,
             onValidationChanged: (bool isValid) =>
@@ -70,11 +71,11 @@ class _InitialBodyState extends State<InitialBody> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Данные сохранены'),
+            title: const Text('Data has saved'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('OK'),
+                child: Text('OK'.loc),
               ),
             ],
           ),
@@ -114,26 +115,19 @@ class _FirstPageState extends State<_FirstPage> {
           children: [
             SizedBox(width: uiPadding),
             Expanded(
-              child: HoistPartPage(fields: widget._fields, formValidator: _formValidator),
+              child: HoistPartPage(fields: widget._fields),
             ),
             Expanded(
-              child: TrolleyRunningMechanismPartPage(fields: widget._fields, formValidator: _formValidator),
+              child: TrolleyRunningMechanismPartPage(fields: widget._fields),
             ),
             Expanded(
-              child: BridgeRunningMechanismPartPage(fields: widget._fields, formValidator: _formValidator),
+              child: BridgeRunningMechanismPartPage(fields: widget._fields),
             ),
             SizedBox(width: uiPadding),
           ],
         ),
       ),
     );
-  }
-  //
-  String? _formValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Поле обязательно для заполнения';
-    }
-    return null;
   }
   //
   void _updateFormValidity() {
@@ -173,23 +167,16 @@ class _SecondPageState extends State<_SecondPage> {
           children: [
             SizedBox(width: uiPadding),
             Expanded(
-              child: GeneralCraneParametersPartPage(fields: widget._fields, formValidator: _formValidator),
+              child: GeneralCraneParametersPartPage(fields: widget._fields),
             ),
             Expanded(
-              child: OverallDimensionsCranePartPage(fields: widget._fields, formValidator: _formValidator),
+              child: OverallDimensionsCranePartPage(fields: widget._fields),
             ),
             SizedBox(height: uiPadding),
           ],
         ),
       ),
     );
-  }
-  //
-  String? _formValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Поле обязательно для заполнения';
-    }
-    return null;
   }
   //
   void _updateFormValidity() {
@@ -201,7 +188,7 @@ class _SecondPageState extends State<_SecondPage> {
 //
 //
 //
-final sgocInit = {
+final Map<String, Object?> sgocInit = {
   // Hoist parameters
   'load': '5.0', // load
   'lifting-height': '6.0', // lifting height
@@ -209,8 +196,8 @@ final sgocInit = {
     'value': "hook block",
     'options': const ['hook block', 'electro-hydraulic grab', 'electromagnet'], // lifting device options
   },
-  'rated-travelling-hoist-speed': '8.0', // rated travelling hoist speed
-  'slow-travelling-hoist-speed': '1.5', // slow travelling hoist speed
+  'rated-traveling-hoist-speed': '8.0', // rated traveling hoist speed
+  'slow-traveling-hoist-speed': '1.5', // slow traveling hoist speed
   'hoist-group': {   // hoist group
     'value': "M5",
     'options': List.generate(8, (index) => 'M${index + 1}'), // hoist group options
@@ -241,8 +228,8 @@ final sgocInit = {
     'options': const ['safe', 'dangerous'], // type of lifted load options
   },
   // Trolley running mechanism
-  'rated-travelling-trolley-speed': '20.0',
-  'slow-travelling-trolley-speed': '5.0',
+  'rated-traveling-trolley-speed': '20.0',
+  'slow-traveling-trolley-speed': '5.0',
   'trolley-group': {
     'value': 'M4',
     'options': List.generate(8, (index) => 'M${index + 1}'),
@@ -261,8 +248,8 @@ final sgocInit = {
   },
 
   // Bridge running mechanism
-  'rated-travelling-bridge-speed': '32.0',
-  'slow-travelling-bridge-speed': '8.0',
+  'rated-traveling-bridge-speed': '32.0',
+  'slow-traveling-bridge-speed': '8.0',
   'crane-drive-group': {
     'value': 'M4',
     'options': List.generate(8, (index) => 'M${index + 1}'),

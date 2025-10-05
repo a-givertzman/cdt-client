@@ -1,30 +1,23 @@
-import 'package:cdt_client/infrostructure/bc/sgoc_init.dart';
+import 'package:cdt_client/infrastructure/bc/sgoc_init.dart';
 import 'package:flutter/material.dart';
 import 'package:cdt_client/presentation/core/widgets/form_fields/number_form_field.dart';
 import 'package:cdt_client/presentation/core/widgets/form_fields/drop_down_form_field.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
-import 'package:hmi_widgets/src/core/validation/cases/only_double_validation_case.dart';
-import 'package:hmi_widgets/src/core/validation/validator.dart';
-
+import 'package:hmi_core/hmi_core_translate.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 ///
 /// Part of [InitialPage] - hoist.
 /// First ten fields.
 class HoistPartPage extends StatefulWidget {
-  //final AppUserStacked users;
-  final SgocInit fields;
-  final Function(String?) formValidator;
+  final SgocInit _fields;
   ///
   /// The body of hoist.
   ///
-  /// [users] - all stored users
-  /// [fields] - temprorary example of InitialPage content
-  /// [formValidator] - function for cheking the whole form validity
+  /// [fields] - temporary example of InitialPage content
   const HoistPartPage({
     super.key,
-    //required this.users,
-    required this.fields,
-    required this.formValidator,
-  });
+    required SgocInit fields,
+  })  : _fields = fields;
   @override
   State<HoistPartPage> createState() => _HoistPartPageState();
 }
@@ -39,78 +32,74 @@ class _HoistPartPageState extends State<HoistPartPage> {
       spacing: uiPadding,
       children: [
         SizedBox(height: uiPaddingDouble),
-        Text('Параметры механизма подъёма'),
+        Text('Lifting mechanism parameters'.loc),
         NumberFormFieldWidget(
-          label: 'Грузоподъёмность механизма, т',
-          value: widget.fields.get('load'),
-          onChanged: (value) => setState(() => widget.fields.update('load', value)),
-          formValidator: widget.formValidator,
+          label: 'Load, t'.loc,
+          value: widget._fields.get('load'),
+          onChanged: (value) => setState(() => widget._fields.update('load', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
-          label: 'Высота подъёма механизма, м',
-          value: widget.fields.get('lifting-height'),
-          onChanged: (value) => setState(() => widget.fields.update('lifting-height', value)),
-          formValidator: widget.formValidator,
+          label: 'Lifting height, m'.loc,
+          value: widget._fields.get('lifting-height'),
+          onChanged: (value) => setState(() => widget._fields.update('lifting-height', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
-          label: 'Тип грузозахватного органа',
-          value: widget.fields.getOptionsValue('lifting-device'),
-          items: widget.fields.getOptions('lifting-device'),
+          label: 'Lifting device'.loc,
+          value: widget._fields.getOptionsValue('lifting-device'),
+          items: widget._fields.getOptions('lifting-device'),
           onChanged: (value) => setState(() {
-            widget.fields.update('lifting-device', value);
+            widget._fields.update('lifting-device', value);
           }),
-          formValidator: widget.formValidator,
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         NumberFormFieldWidget(
-          label: 'Номинальная скорость подъёма, м/мин',
-          value: widget.fields.get('rated-travelling-hoist-speed'),
-          onChanged: (value) => setState(() => widget.fields.update('rated-travelling-hoist-speed', value)),
-          formValidator: widget.formValidator,
+          label: 'Rated traveling hoist speed, m/min'.loc,
+          value: widget._fields.get('rated-traveling-hoist-speed'),
+          onChanged: (value) => setState(() => widget._fields.update('rated-traveling-hoist-speed', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         NumberFormFieldWidget(
-          label: 'Замедленная скорость подъёма, м/мин',
-          value: widget.fields.get('slow-travelling-hoist-speed'),
-          onChanged: (value) => setState(() => widget.fields.update('slow-travelling-hoist-speed', value)),
-          formValidator: widget.formValidator,
+          label: 'Slow traveling hoist speed, m/min'.loc,
+          value: widget._fields.get('slow-traveling-hoist-speed'),
+          onChanged: (value) => setState(() => widget._fields.update('slow-traveling-hoist-speed', value)),
           validator: Validator(cases: [OnlyDoubleValidationCase()]),
         ),
         DropDownFormFieldWidget(
-          label: 'Тип привода механизма подъёма',
-          value: widget.fields.getOptionsValue('lifting-mechanism-drive-type'),
-          items: widget.fields.getOptions('lifting-mechanism-drive-type'),
-          onChanged: (value) => setState(() => widget.fields.update('lifting-mechanism-drive-type', value)),
-          formValidator: widget.formValidator,
+          label: 'Lifting mechanism drive type'.loc,
+          value: widget._fields.getOptionsValue('lifting-mechanism-drive-type'),
+          items: widget._fields.getOptions('lifting-mechanism-drive-type'),
+          onChanged: (value) => setState(() => widget._fields.update('lifting-mechanism-drive-type', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Продолжительность включения (ПВ)',
-          value: widget.fields.getOptionsValue('lifting-duration'),
-          items: widget.fields.getOptions('lifting-duration'),
-          onChanged: (value) => setState(() => widget.fields.update('lifting-duration', value)),
-          formValidator: widget.formValidator,
+          label: 'Lifting duration'.loc,
+          value: widget._fields.getOptionsValue('lifting-duration'),
+          items: widget._fields.getOptions('lifting-duration'),
+          onChanged: (value) => setState(() => widget._fields.update('lifting-duration', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Система управления приводом',
-          value: widget.fields.getOptionsValue('hoist-control-system'),
-          items: widget.fields.getOptions('hoist-control-system'),
-          onChanged: (value) => setState(() => widget.fields.update('hoist-control-system', value)),
-          formValidator: widget.formValidator,
+          label: 'Hoist control system'.loc,
+          value: widget._fields.getOptionsValue('hoist-control-system'),
+          items: widget._fields.getOptions('hoist-control-system'),
+          onChanged: (value) => setState(() => widget._fields.update('hoist-control-system', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Тип привода механизма подъёма',
-          value: widget.fields.getOptionsValue('hoist-group'),
-          items: widget.fields.getOptions('hoist-group'),
-          onChanged: (value) => setState(() => widget.fields.update('hoist-group', value)),
-          formValidator: widget.formValidator,
+          label: 'Hoist group'.loc,
+          value: widget._fields.getOptionsValue('hoist-group'),
+          items: widget._fields.getOptions('hoist-group'),
+          onChanged: (value) => setState(() => widget._fields.update('hoist-group', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
         DropDownFormFieldWidget(
-          label: 'Тип поднимаемого груза',
-          value: widget.fields.getOptionsValue('type-of-lifted-load'),
-          items: widget.fields.getOptions('type-of-lifted-load'),
-          onChanged: (value) => setState(() => widget.fields.update('type-of-lifted-load', value)),
-          formValidator: widget.formValidator,
+          label: 'Type of lifted load'.loc,
+          value: widget._fields.getOptionsValue('type-of-lifted-load'),
+          items: widget._fields.getOptions('type-of-lifted-load'),
+          onChanged: (value) => setState(() => widget._fields.update('type-of-lifted-load', value)),
+          validator: Validator(cases: [MinLengthValidationCase(1)]),
         ),
       ],
     );
