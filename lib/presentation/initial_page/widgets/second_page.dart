@@ -35,6 +35,7 @@ class _SecondPageState extends State<SecondPage> {
       child: Form(
         key: _formKey,
         onChanged: _updateFormValidity,
+        autovalidateMode: AutovalidateMode.always,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: uiPadding,
