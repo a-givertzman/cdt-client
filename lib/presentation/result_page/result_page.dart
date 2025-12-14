@@ -4,10 +4,12 @@ import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 ///
 /// Page for result params(after calculations).
+/// Builds page for result params of the crane.
 class ResultPage extends StatefulWidget {
   final AppUserStacked users;
   //final SgocInit values;
   /// 
+  /// Page for result params(after calculations).
   /// Builds page for result params of the crane.
   /// 
   /// [values] - result params. 

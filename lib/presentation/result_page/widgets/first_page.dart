@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 ///
 /// Part of a [ResultPage].
+/// The body of [FirstPage].
 class FirstPage extends StatefulWidget {
   final SgocInit _fields;
   final void Function(bool) _onValidationChanged;
   ///
+  /// Part of a [ResultPage].
   /// The body of [FirstPage].
   /// 
   /// - [fields] - temporary data of [ResultPage].

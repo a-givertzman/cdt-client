@@ -6,10 +6,12 @@ import 'package:hmi_core/hmi_core.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [ThirdPage] - the crane power supply parameters.
+/// Part of [ThirdPage].
+/// The body of the general crane parameters.
 class CranePowerSupplyPage extends StatefulWidget {
   final SgocInit _fields;
   ///
+  /// Part of [ThirdPage].
   /// The body of the general crane parameters.
   ///
   /// [fields] - temporary example of InitialPage content

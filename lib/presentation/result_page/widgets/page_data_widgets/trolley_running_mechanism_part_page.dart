@@ -7,10 +7,12 @@ import 'package:hmi_core/hmi_core.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [FirstPage] - the trolley running mechanism parameters.
+/// Part of [FirstPage].
+/// The body of the general crane parameters.
 class TrolleyRunningMechanismPage extends StatefulWidget {
   final SgocInit _fields;
   ///
+  /// Part of [FirstPage].
   /// The body of the general crane parameters.
   ///
   /// [fields] - temporary example of ResultPage content
