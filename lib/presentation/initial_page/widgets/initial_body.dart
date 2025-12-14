@@ -13,6 +13,8 @@ class InitialBody extends StatefulWidget {
   final SgocInit _fields;
   ///
   /// The body of the [InitialPage] widget.
+  /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/Docs-hoist-mechanism-Hoist/docs/input_output_data.md).
+  /// Access to edit may be restricted depends on user privileges.
   ///
   /// [_fields] - temporary example of InitialPage content
   InitialBody({

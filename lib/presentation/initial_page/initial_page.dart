@@ -10,7 +10,9 @@ class InitialPage extends StatefulWidget {
   final AppUserStacked users;
   //final SgocInit values;
   /// 
-  /// Builds page for initialization params of the crane.
+  /// Page for initialization params of the crane.
+  /// Builds page on the base of list of users 
+  /// and current data of the crane. 
   /// 
   /// [values] - parameters for initialization 
   const InitialPage({

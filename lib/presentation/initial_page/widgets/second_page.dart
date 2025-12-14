@@ -4,11 +4,13 @@ import 'package:cdt_client/presentation/initial_page/widgets/page_data_widgets/g
 import 'package:cdt_client/presentation/initial_page/widgets/page_data_widgets/overall_dimensions_crane_part_page.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 ///
-///
+/// Part of [InitialPage].
+/// The body of [SecondPage].
 class SecondPage extends StatefulWidget {
   final SgocInit _fields;
   final void Function(bool) _onValidationChanged;
   ///
+  /// Part of [InitialPage].
   /// The body of [SecondPage].
   /// 
   /// - [fields] - temporary example of [ResultPage] data.

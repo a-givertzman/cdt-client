@@ -6,10 +6,12 @@ import 'package:cdt_client/presentation/initial_page/widgets/page_data_widgets/t
 import 'package:cdt_client/presentation/initial_page/widgets/page_data_widgets/bridge_running_mechanism_part_page.dart';
 ///
 /// Part of [InitialPage].
+/// The body of [FirstPage].
 class FirstPage extends StatefulWidget {
   final SgocInit _fields;
   final void Function(bool) _onValidationChanged;
   ///
+  /// Part of [InitialPage].
   /// The body of [FirstPage].
   /// 
   /// - [fields] - temporary example of [ResultPage] data.

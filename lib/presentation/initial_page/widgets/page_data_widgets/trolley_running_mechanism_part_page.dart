@@ -6,12 +6,15 @@ import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
 ///
-/// Part of [FirstPage] - the trolley running mechanism.
+/// Part of [FirstPage].
+/// The body of the trolley running mechanism.
 /// FIve fields.
 class TrolleyRunningMechanismPartPage extends StatefulWidget {
   final SgocInit _fields;
   ///
+  /// Part of [FirstPage].
   /// The body of the trolley running mechanism.
+  /// FIve fields.
   ///
   /// [fields] - temporary example of InitialPage content
   const TrolleyRunningMechanismPartPage({

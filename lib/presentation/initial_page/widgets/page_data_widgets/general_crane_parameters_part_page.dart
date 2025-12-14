@@ -6,14 +6,16 @@ import 'package:cdt_client/presentation/core/widgets/form_fields/text_form_field
 import 'package:hmi_core/hmi_core.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_widgets/hmi_widgets.dart';
-
 ///
-/// Part of [SecondPage] - the general crane parameters.
+/// Part of [SecondPage].
+/// The body of the general crane parameters.
 /// Thirteen fields.
 class GeneralCraneParametersPartPage extends StatefulWidget {
   final SgocInit _fields;
   ///
+  /// Part of [SecondPage].
   /// The body of the general crane parameters.
+  /// Thirteen fields.
   ///
   /// [fields] - temporary example of InitialPage content
   const GeneralCraneParametersPartPage({
