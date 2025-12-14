@@ -2,10 +2,12 @@ import 'package:cdt_client/presentation/cargo_carier_selection_page/widgets/carg
 import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 ///
-/// Page for cargo carier selection page params of the crane.
+/// Page for cargo carier selection params 
+/// calculations after the initialization page. 
 class CargoCarierSelectionPage extends StatefulWidget {
   /// 
-  /// Page for cargo carier selection page params of the crane.
+  /// Page for cargo carier selection params 
+  /// calculations after the initialization page. 
   const CargoCarierSelectionPage({super.key});
   //
   @override

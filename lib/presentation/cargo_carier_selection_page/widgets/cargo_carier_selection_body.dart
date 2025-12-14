@@ -50,7 +50,7 @@ class _CargoCarierSelectionBodyState extends State<CargoCarierSelectionBody> {
                     spacing: uiPadding,
                     children: [
                       SizedBox(height: uiPaddingDouble),
-                      Text('Cargo carier selection'.loc),
+                      Text('Cargo carier selection page'.loc),
                       DropDownFormFieldWidget(
                         label: 'Hoist type'.loc,
                         value: widget._fields.getOptionsValue('hoist type'),

@@ -500,7 +500,27 @@
         "Тип привода механизма подъёма"
     ],
     "Type of lifted load": [
-    "Type of lifted load", 
-    "Тип поднимаемого груза"
+        "Type of lifted load", 
+        "Тип поднимаемого груза"
+    ],
+    "Cargo carier selection": [
+        "Cargo carier selection page",
+        "Окно выбора грузового тельфера"
+    ],
+    "Hoist type": [
+        "Hoist type",
+        "Тип тельфера"
+    ],
+    "Number of wheels": [
+        "Number of wheels",
+        "Количество колёс"
+    ],
+    "Headroom type": [
+        "Headroom type",
+        "Тип строительной высоты"
+    ],
+    "Hoist manufacturer": [
+        "Heave manufacturer",
+        "Производитель тельфера"
     ]
 }
