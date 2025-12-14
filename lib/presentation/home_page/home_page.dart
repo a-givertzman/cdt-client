@@ -1,6 +1,5 @@
 import 'package:cdt_client/presentation/home_page/widgets/home_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 
@@ -23,9 +22,9 @@ class HomePage extends StatelessWidget {
         title: Text('Home'.loc),
         automaticallyImplyLeading: false,
         leading: IconButton(
-          icon: const Icon(Icons.close),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-            SystemNavigator.pop();
+            Navigator.of(context).pop();
           },
         ),
       ),
