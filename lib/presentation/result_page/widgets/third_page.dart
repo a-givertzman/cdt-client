@@ -36,6 +36,7 @@ class _ThirdPageState extends State<ThirdPage> {
       child: Form(
         key: _formKey,
         onChanged: _updateFormValidity,
+        autovalidateMode: AutovalidateMode.always,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: uiPadding,

@@ -36,6 +36,7 @@ class _FirstPageState extends State<FirstPage> {
       child: Form(
         key: _formKey,
         onChanged: _updateFormValidity,
+        autovalidateMode: AutovalidateMode.always,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: uiPadding,
