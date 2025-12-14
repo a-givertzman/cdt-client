@@ -1,158 +1,127 @@
 import 'package:flutter/material.dart';
-import 'package:cdt_client/presentation/core/widgets/pages_switch/form_page.dart';
+import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.dart';
+import 'package:hmi_core/hmi_core_app_settings.dart';
+import 'package:hmi_core/hmi_core_translate.dart';
 ///
-/// Widget that implements switching between 
-/// pages with bottom indication. Switching 
-/// is using enum with indexes of pages to switch.
-/// Bottom indication is circle buttons, their number
-/// is equel to the number of pages.
+/// Widget that provides switching between pages.
 class PagesSwitch extends StatefulWidget {
+  final List<PageConfig> _pages;
+  final bool Function() _isPageValid;
+  final void Function() _formsSubmission;
   ///
-  /// Widget that implements switching between pages.
+  /// Widget that provides switching
+  /// between pages with bottom controls.
+  /// 
+  /// - [pages] - content for every page.
+  /// - [isPageValid] - callback for checking if page is valid.
   const PagesSwitch({
     super.key,
-  });
+    required List<PageConfig> pages,
+    required bool Function() isPageValid,
+    required void Function() formsSubmission,
+  })  : _pages = pages, 
+        _isPageValid = isPageValid,
+        _formsSubmission = formsSubmission;
   //
   @override
   State<PagesSwitch> createState() => _PagesSwitchState();
 }
 //
 class _PagesSwitchState extends State<PagesSwitch> {
-  static const _slideDuration = Duration(milliseconds: 300);
-  static const List<Pages> _pages = [Pages.first, Pages.second, Pages.third];
+  final _slideDuration = Duration(milliseconds: 300);
   late final PageController _pageController;
-  Pages _currentPage = Pages.first;
-  //
-  final Map<Pages, Map> _pageData = { for (var k in _pages) k : {} };
+  int _currentPageIndex = 0;
   //
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
-  }
+  } 
   //
   @override
   void dispose() {
-    _pageController.dispose();
     super.dispose();
+    _pageController.dispose();
   }
   //
   @override
   Widget build(BuildContext context) {
+    final iconSize = Theme.of(context).iconTheme.size ?? 28.0;
+    final padding = const Setting('blockPadding').toDouble;
+    final isCurrentFormValid = widget._isPageValid();
     return Scaffold(
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
-        onPageChanged: (index) => setState(() => _currentPage = Pages.values[index]),
-        children: _pages.map(_createFormByIndex).toList(),
+        onPageChanged: (index) => setState(() => _currentPageIndex = index),
+        children: widget._pages.map((page) => page.builder(context)).toList(),
       ),
-      bottomNavigationBar: _buildBottomControls(),
-    );
-  }
-  ///
-  /// Creating all forms on the base of their index
-  Widget _createFormByIndex(Pages form) {
-    return const Placeholder(child: Text('Implementation of pages switch.'));
-    // switch(form) {
-    //   case FormPage.first:
-    //     return Page1(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    //   case FormPage.second:
-    //     return Page2(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    //   case FormPage.third:
-    //     return Page3(
-    //       form: form,
-    //       pageData: _pageData,
-    //     );
-    // }
-  }
-  ///
-  /// Implementation of bottom indication
-  Widget _buildBottomControls() {
-    final iconSize = Theme.of(context).iconTheme.size ?? 24.0;
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // cheak if the page is first for back button placement
-          if (_currentPage != _pages.first)
-            ElevatedButton(
-              onPressed: () => _slideBak(),
-              child: const Text('Назад'),
-            )
-          else
-            const SizedBox(width: 100),
-          Row(
-            children: _pages.map(
-              (page) => IconButton(
-                onPressed: () => _slideToPage(page.index),
-                icon: const Icon(Icons.circle),
-                color: _currentPage == page
-                  ? Theme.of(context).primaryColor
-                  : Colors.grey,
-                iconSize: _currentPage == page
-                  ? iconSize * 1.3
-                  : null,
-              )
-            ).toList(),
-          ),
-          // cheak if the page is last for next or submit button placement
-          if (_currentPage != _pages.last)
-            ElevatedButton(
-              onPressed: () => _slideFwd(),
-              child: const Text('Далее'),
-            )
-          else
-            ElevatedButton(
-              onPressed: _submitAllForms,
-              child: const Text('Готово'),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(padding),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _currentPageIndex == 0
+                ? const SizedBox(width: 80)
+                : ElevatedButton(
+                    onPressed: () => _slideBak(),
+                    child: Text('Back'.loc),
+                  ),
+            Row(
+              children: widget._pages.asMap().entries.map(
+                (entry) => IconButton(
+                  onPressed: () => isCurrentFormValid 
+                      ? _slideToPage(entry.key) 
+                      : null,
+                  color: _currentPageIndex == entry.key
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey,
+                  iconSize: _currentPageIndex == entry.key
+                      ? iconSize
+                      : null,
+                  icon: const Icon(Icons.circle),
+                )
+              ).toList(),
             ),
-        ],
+            _currentPageIndex == widget._pages.length - 1
+                ? ElevatedButton(
+                    onPressed: () => isCurrentFormValid 
+                        ? widget._formsSubmission()
+                        : null,
+                    child: Text('Done'.loc),
+                  )
+                : ElevatedButton(
+                    onPressed: () => isCurrentFormValid
+                        ? _slideFwd()
+                        : null,
+                    child: Text('Next'.loc),
+                  ),
+          ],
+        ),
       ),
     );
   }
-  ///
-  /// Just sliding forward
+  //
   void _slideFwd() {
-    _currentPage = _currentPage.add();
-    _slideToPage(_currentPage.index);
+    if (_currentPageIndex < widget._pages.length - 1) {
+      _slideToPage(_currentPageIndex + 1);
+    }
   }
-  ///
-  /// Just sliding backward
+  //
   void _slideBak() {
-    _currentPage = _currentPage.sub();
-    _slideToPage(_currentPage.index);
+    if (_currentPageIndex > 0) {
+      _slideToPage(_currentPageIndex - 1);
+    }
   }
-  ///
-  /// Slide to page with animation 
+  //
   void _slideToPage(int index) {
     _pageController.animateToPage(
       index,
       duration: _slideDuration,
       curve: Curves.easeInOut,
     );
-  }
-  ///
-  /// Submition of all forms 
-  void _submitAllForms() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Данные сохранены'),
-        content: Text('Получено ${_pageData.length} форм данных'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
+    setState(() {
+      _currentPageIndex = index;
+    });
   }
 }

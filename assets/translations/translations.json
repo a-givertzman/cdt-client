@@ -1,69 +1,510 @@
-{
-    "m/s": ["m/s", "м/c"],
-    "Connection diagnostics": ["Connection diagnostics", "Диагностика связи"],
-    "Reserved": ["Reserved", "Резерв"],
-    "/App/ied11/db899_drive_data_exhibit/": ["Exhibit (899)", "Выставка (899)"],
-    "/App/ied12/db902_panel_controls/": ["Settings (902)", "Уставки (902)"],
-    "/App/ied13/db905_visual_data_fast/": ["Visual data fast (905)", "Visual data fast (905)"],
-    "/App/ied14/db906_visual_data/": ["Visual data (906)", "Visual data (906)"],
-    "HPU.Pump1.Active": ["HPU.Pump1.Active", "HPU.Pump1.Active"],
-    "HPU.Pump1.Alarm": ["HPU.Pump1.Alarm", "HPU.Pump1.Alarm"],
-    "HPU.Pump2.Active": ["HPU.Pump2.Active", "HPU.Pump2.Active"],
-    "HPU.Pump2.Alarm": ["HPU.Pump2.Alarm", "HPU.Pump2.Alarm"],
-    "HPU.LowOilTemp": ["HPU.Low Oil temp", "HPU.Низкая температура масла"],
-    "Oil temp": ["Oil temp", "Темп масла"],
-    "/Local/Local.System.Connection": ["Server", "Сервер"],
-    "/App/ied12/Connection": ["IED12", "IED12"],
-    "/App/ied13/Connection": ["IED13", "IED13"],
-    "/App/ied14/Connection": ["IED14", "IED14"],
-    "Draw lines": ["Draw lines", "Рисовать линии"],
-    "Draw dots": ["Draw dots", "Рисовать точки"],
-    "Show legend": ["Show legend", "Показать легенду"],
-    "Hide legend": ["Hide legend", "Скрыть легенду"],
-    "Pause": ["Pause", "Пауза"],
-    "Continue": ["Continue", "Продолжить"],
-    "HPU oil temperature": ["HPU oil temperature", "Температура масла HPU"],
-    "Sensor MRU": ["Sensor MRU", "Сенсор MRU"],
-    "Winch speed": ["Winch speed", "Скорость лебёдки"],
-    "Heave compensation": ["Heave compensation", "Компенсация качки"],
-    "Connection to devices": ["Connection to devices", "Связь с устройствами"],
-    "Zoom out": ["Zoom out", "Отдалить"],
-    "Zoom in": ["Zoom in", "Приблизить"],
-    "% of R0": ["% of R0", "% от R0"],
-    "HPU 1": ["HPU 1", "HPU 1"],
-    "HPU 2": ["HPU 2", "HPU 2"],
-    "Emergency HPU": ["HPUR", "HPUR"],
-    "Temper": ["Temp", "Темпер"],
-    "Temperature": ["Temperature", "Температура"],
-    "Abs length": ["Abs length", "Абс длина"],
-    "Rel length": ["Rel length", "Отн длина"],
-    "Abs rope length": ["Abs rope length", "Абс длина каната"],
-    "Rel rope length": ["Rel rope length", "Отн длина каната"],
-    "Relative rope length": ["Relative rope length", "Относительная длина каната"],
-    "Absolute rope length": ["Absolute rope length", "Абсолютная длина каната"],
-    "Hydraulic power units": ["Hydraulic power units", "Гидравлические силовые агрегаты"],
-    "Pump": ["Pump", "Насос"],
-    "Emrg pump": ["Emrg pump", "Ав насос"],
-    "Failure": ["Failure", "Авария"],
-    "Presence of failure or warning": ["Presence of failure or warning", "Наличие аварии или предупреждения"],
-    "Pump station": ["Pump station", "Насосная станция"],
-    "Pump 1": ["Pump 1", "Насос 1"],
-    "Pump 2": ["Pump 2", "Насос 2"],
-    "Emergency pump": ["Emergency pump", "Аварийный насос"],
-    "Blocking by load": ["Blocking by load", "Блокировка по нагрузке"],
-    "Oil temp of pump station": ["Oil temp of pump station", "Температура масла насосной станции"],
-    "Load on active winch": ["Load on active winch", "Нагрузка на активной лебёдке"],
-    "Pressure of oil": ["Pressure of oil", "Давление масла"],
-    "bar": ["bar", "бар"],
-    "Automatic overload protection system": ["Automatic overload protection system", "Автоматическое ограничение грузоподъёмности"],
-    "Manual overload protection system": ["Manual overload protection system", "Ручное ограничение грузоподъёмности"],
-    "Active heave compensation": ["Active heave compensation", "Активная компенсация качки"],
-    "Safe working load on active winch": ["Safe working load on active winch", "Безопасная рабочая нагрузка на активной лебёдке"],
-    "Constant tension": ["Constant tension", "Постоянное натяжение"],
-    "Constant tension status": ["Constant tension status", "Статус постоянного натяжения"],
-    "Constant tension level": ["Constant tension level", "Уровень постоянного натяжения"],
-    "Ratio of current load to rated": ["Ratio of current load to rated", "Отношение текущей нагрузки к номинальной"],
-    "Winch brake": ["Winch brake", "Тормоз лебёдки"],
-    "Pitch angle": ["Pitch angle", "Угол дифферента"],
-    "Roll angle": ["Roll angle", "Угол крена"]
+{   
+    "m/s": [
+        "m/s", 
+        "м/c"
+    ],
+    "Connection diagnostics": [
+        "Connection diagnostics", 
+        "Диагностика связи"
+    ],
+    "Reserved": [
+        "Reserved", 
+        "Резерв"
+    ],
+    "/App/ied11/db899_drive_data_exhibit/": [
+        "Exhibit (899)", 
+        "Выставка (899)"
+    ],
+    "/App/ied12/db902_panel_controls/": [
+        "Settings (902)", 
+        "Уставки (902)"
+    ],
+    "/App/ied13/db905_visual_data_fast/": [
+        "Visual data fast (905)", 
+        "Visual data fast (905)"
+    ],
+    "/App/ied14/db906_visual_data/": [
+        "Visual data (906)", 
+        "Visual data (906)"
+    ],
+    "HPU.Pump1.Active": [
+        "HPU.Pump1.Active", 
+        "HPU.Pump1.Active"
+    ],
+    "HPU.Pump1.Alarm": [
+        "HPU.Pump1.Alarm", 
+        "HPU.Pump1.Alarm"
+    ],
+    "HPU.Pump2.Active": [
+        "HPU.Pump2.Active", 
+        "HPU.Pump2.Active"
+    ],
+    "HPU.Pump2.Alarm": [
+        "HPU.Pump2.Alarm", 
+        "HPU.Pump2.Alarm"
+    ],
+    "HPU.LowOilTemp": [
+        "HPU.Low Oil temp", 
+        "HPU.Низкая температура масла"
+    ],
+    "Oil temp": [
+        "Oil temp", 
+        "Темп масла"
+    ],
+    "/Local/Local.System.Connection": [
+        "Server", 
+        "Сервер"
+    ],
+    "/App/ied12/Connection": [
+        "IED12", 
+        "IED12"
+    ],
+    "/App/ied13/Connection": [
+        "IED13", 
+        "IED13"
+    ],
+    "/App/ied14/Connection": [
+        "IED14", 
+        "IED14"
+    ],
+    "Draw lines": [
+        "Draw lines", 
+        "Рисовать линии"
+    ],
+    "Draw dots": [
+        "Draw dots", 
+        "Рисовать точки"
+    ],
+    "Show legend": [
+        "Show legend", 
+        "Показать легенду"
+    ],
+    "Hide legend": [
+        "Hide legend", 
+        "Скрыть легенду"
+    ],
+    "Pause": [
+        "Pause", 
+        "Пауза"
+    ],
+    "Continue": [
+        "Continue", 
+        "Продолжить"
+    ],
+    "HPU oil temperature": [
+        "HPU oil temperature", 
+        "Температура масла HPU"
+    ],
+    "Sensor MRU": [
+        "Sensor MRU", 
+        "Сенсор MRU"
+    ],
+    "Winch speed": [
+        "Winch speed", 
+        "Скорость лебёдки"
+    ],
+    "Heave compensation": [
+        "Heave compensation", 
+        "Компенсация качки"
+    ],
+    "Connection to devices": [
+        "Connection to devices", 
+        "Связь с устройствами"
+    ],
+    "Zoom out": [
+        "Zoom out", 
+        "Отдалить"
+    ],
+    "Zoom in": [
+        "Zoom in", 
+        "Приблизить"
+    ],
+    "% of R0": [
+        "% of R0", 
+        "% от R0"
+    ],
+    "HPU 1": [
+        "HPU 1", 
+        "HPU 1"
+    ],
+    "HPU 2": [
+        "HPU 2", 
+        "HPU 2"
+    ],
+    "Emergency HPU": [
+        "HPUR", 
+        "HPUR"
+    ],
+    "Temper": [
+        "Temp", 
+        "Темпер"
+    ],
+    "Temperature": [
+        "Temperature", 
+        "Температура"
+    ],
+    "Abs length": [
+        "Abs length", 
+        "Абс длина"
+    ],
+    "Rel length": [
+        "Rel length", 
+        "Отн длина"
+    ],
+    "Abs rope length": [
+        "Abs rope length", 
+        "Абс длина каната"
+    ],
+    "Rel rope length": [
+        "Rel rope length", 
+        "Отн длина каната"
+    ],
+    "Relative rope length": [
+        "Relative rope length", 
+        "Относительная длина каната"
+    ],
+    "Absolute rope length": [
+        "Absolute rope length", 
+        "Абсолютная длина каната"
+    ],
+    "Hydraulic power units": [
+        "Hydraulic power units", 
+        "Гидравлические силовые агрегаты"
+    ],
+    "Pump": [
+        "Pump", 
+        "Насос"
+    ],
+    "Emrg pump": [
+        "Emrg pump", 
+        "Ав насос"
+    ],
+    "Failure": [
+        "Failure", 
+        "Авария"
+    ],
+    "Presence of failure or warning": [
+        "Presence of failure or warning", 
+        "Наличие аварии или предупреждения"
+    ],
+    "Pump station": [
+        "Pump station", 
+        "Насосная станция"
+    ],
+    "Pump 1": [
+        "Pump 1", 
+        "Насос 1"
+    ],
+    "Pump 2": [
+        "Pump 2", 
+        "Насос 2"
+    ],
+    "Emergency pump": [
+        "Emergency pump", 
+        "Аварийный насос"
+    ],
+    "Blocking by load": [
+        "Blocking by load", 
+        "Блокировка по нагрузке"
+    ],
+    "Oil temp of pump station": [
+        "Oil temp of pump station", 
+        "Температура масла насосной станции"
+    ],
+    "Load on active winch": [
+        "Load on active winch", 
+        "Нагрузка на активной лебёдке"
+    ],
+    "Pressure of oil": [
+        "Pressure of oil", 
+        "Давление масла"
+    ],
+    "bar": [
+        "bar", 
+        "бар"
+    ],
+    "Automatic overload protection system": [
+        "Automatic overload protection system", 
+        "Автоматическое ограничение грузоподъёмности"
+    ],
+    "Manual overload protection system": [
+        "Manual overload protection system", 
+        "Ручное ограничение грузоподъёмности"
+    ],
+    "Active heave compensation": [
+        "Active heave compensation", 
+        "Активная компенсация качки"
+    ],
+    "Safe working load on active winch": [
+        "Safe working load on active winch", 
+        "Безопасная рабочая нагрузка на активной лебёдке"
+    ],
+    "Constant tension": [
+        "Constant tension", 
+        "Постоянное натяжение"
+    ],
+    "Constant tension status": [
+        "Constant tension status", 
+        "Статус постоянного натяжения"
+    ],
+    "Constant tension level": [
+        "Constant tension level", 
+        "Уровень постоянного натяжения"
+    ],
+    "Ratio of current load to rated": [
+        "Ratio of current load to rated", 
+        "Отношение текущей нагрузки к номинальной"
+    ],
+    "Winch brake": [
+        "Winch brake", 
+        "Тормоз лебёдки"
+    ],
+    "Pitch angle": [
+        "Pitch angle", 
+        "Угол дифферента"
+    ],
+    "Roll angle": [
+        "Roll angle", 
+        "Угол крена"
+    ],
+
+
+
+
+    "Back": [
+        "Back",
+        "Назад"
+    ],
+    "Next": [
+        "Next",
+        "Далее"
+    ],
+    "Done": [
+        "Done",
+        "Готово"
+    ],
+    "Initialization": [
+        "Initialization", 
+        "Инициализация"
+    ],
+    "Home page": [
+        "Home page",
+        "Домашняя страница"
+    ],
+    "Initial page": [
+        "Initial page",
+        "Страница инициализации"
+    ],
+    "OK": [
+        "OK", 
+        "ОК"
+    ],
+    "General parameters of the crane": [
+        "General parameters of the crane", 
+        "Общие параметры крана"
+    ],
+    "Crane purpose": [
+        "Crane purpose", 
+        "Исполнение крана"
+    ],
+    "Explosion-fire-safe crane purpose": [
+        "Explosion-fire-safe crane purpose", 
+        "Взрыво-пожаробезопасное исполнение"
+    ],
+    "Marking of fire-explosion hazardous operating environment": [
+        "Marking of fire-explosion hazardous operating environment", 
+        "Маркировка пожаро-/взрывоопасной среды"
+    ],
+    "Duty class (GOST 34017-2016)": [
+        "Duty class (GOST 34017-2016)", 
+        "Режим работы крана (ГОСТ 34017-2016)"
+    ],
+    "Climatic design and placement category crane": [
+        "Climatic design and placement category crane", 
+        "Климатическое исполнение"
+    ],
+    "Crane wind area": [
+        "Crane wind area", 
+        "Ветровой район"
+    ],
+    "Max use temperature, °C": [
+        "Max use temperature, °C", 
+        "Максимальная температура эксплуатации, °C"
+    ],
+    "Min use temperature, °C": [
+        "Min use temperature, °C", 
+        "Минимальная температура эксплуатации, °C"
+    ],
+    "Basic crane control": [
+        "Basic crane control", 
+        "Основной вид управления"
+    ],
+    "C  b location": [
+        "Cab location", 
+        "Место расположения кабины"
+    ],
+    "Identical hoists volume, pcs": [
+        "Identical hoists volume, pcs", 
+        "Количество грузовых тележек, шт"
+    ],
+    "Max crane mass, t": [
+        "Max crane mass, t", 
+        "Максимальная масса крана, т"
+    ],
+    "Max wheel load, kN": [
+        "Max wheel load, kN", 
+        "Допускаемое давление колеса, кН"
+    ],
+    "Parameters of the crane traveling mechanism": [
+        "Parameters of the crane traveling mechanism", 
+        "Параметры механизма передвижения крана"
+    ],
+    "Rated traveling bridge speed, m/min": [
+        "Rated traveling bridge speed, m/min", 
+        "Номинальная скорость передвижения моста, м/мин"
+    ],
+    "Slow traveling bridge speed, m/min": [
+        "Slow traveling bridge speed, m/min", 
+        "Замедленная скорость передвижения моста, м/мин"
+    ],
+    "Crane drive group": [
+        "Crane drive group", 
+        "Режим работы механизма передвижения моста крана"
+    ],
+    "Bridge movement duration": [
+        "Bridge movement duration", 
+        "Продолжительность включения (ПВ) механизма"
+    ],
+    "Bridge control system": [
+        "Bridge control system", 
+        "Система управления приводом"
+    ],
+    "Crane power system": [
+        "Crane power system", 
+        "Тип токоподвода к крану"
+    ],
+    "Bridge drive type system": [
+        "Bridge drive type system", 
+        "Тип механизма передвижения"
+    ],
+    "Bridge drive diagram": [
+        "Bridge drive diagram", 
+        "Схема привода передвижения крана"
+    ],
+    "Bridge control system of synchronous movement": [
+        "Bridge control system of synchronous movement", 
+        "Система синхронизации механизма передвижения крана"
+    ],
+    "Type crane rail": [
+        "Type crane rail", 
+        "Тип подкранового пути"
+    ],
+    "Crane rail length, m": [
+        "Crane rail length, m", 
+        "Длина подкранового пути, м"
+    ],
+    "Overall dimensions of the crane": [
+        "Overall dimensions of the crane", 
+        "Габаритные размеры крана"
+    ],
+    "Span, m": [
+        "Span, m", 
+        "Пролёт крана, м"
+    ],
+    "Left edge approach lifting device (l1), m": [
+        "Left edge approach lifting device (l1), m", 
+        "Приближение к левому краю (l1), м"
+    ],
+    "Right edge approach lifting device (l2), m": [
+        "Right edge approach lifting device (l2), m", 
+        "Приближение к правому краю (l2), м"
+    ],
+    "Vertical distance from crane rail to lifting device, m": [
+        "Vertical distance from crane rail to lifting device, m", 
+        "Вертикальное расстояние до грузозахватного органа, м"
+    ],
+    "Maximum vertical distance from the crane rail to the top of the crane, m": [
+        "Maximum vertical distance from the crane rail to the top of the crane, m", 
+        "Макс. расстояние до верхней точки крана, м"
+    ],
+    "Max crane base, m": [
+        "Max crane base, m", 
+        "Максимальная база крана, м"
+    ],
+    "Max width crane, m": [
+        "Max width crane, m", 
+        "Максимальная ширина крана, м"
+    ],
+    "Parameters of the hoist travel mechanism": [
+        "Parameters of the hoist travel mechanism", 
+        "Параметры механизма передвижения грузовой тали"
+    ],
+    "Rated traveling trolley speed, m/min": [
+        "Rated traveling trolley speed, m/min", 
+        "Номинальная скорость передвижения тали, м/мин"
+    ],
+    "Slow traveling trolley speed, m/min": [
+        "Slow traveling trolley speed, m/min", 
+        "Замедленная скорость передвижения тали, м/мин"
+    ],
+    "Trolley group": [
+        "Trolley group", 
+        "Режим работы механизма передвижения тали"
+    ],
+    "Trolley control system": [
+        "Trolley control system", 
+        "Система управления приводом"
+    ],
+    "Trolley power system": [
+        "Trolley power system", 
+        "Тип токоподвода к грузовой тали"
+    ],
+    "Lifting mechanism parameters": [
+        "Lifting mechanism parameters", 
+        "Параметры механизма подъёма"
+    ],
+    "Load, t": [
+        "Load, t", 
+        "Грузоподъёмность механизма, т"
+    ],
+    "Lifting height, m": [
+        "Lifting height, m", 
+        "Высота подъёма механизма, м"
+    ],
+    "Lifting device": [
+        "Lifting device", 
+        "Тип грузозахватного органа"
+    ],
+    "Rated traveling hoist speed, m/min": [
+        "Rated traveling hoist speed, m/min", 
+        "Номинальная скорость подъёма, м/мин"
+    ],
+    "Slow traveling hoist speed, m/min": [
+        "Slow traveling hoist speed, m/min", 
+        "Замедленная скорость подъёма, м/мин"
+    ],
+    "Lifting mechanism drive type": [
+        "Lifting mechanism drive type", 
+        "Тип привода механизма подъёма"
+    ],
+    "Lifting duration": [
+        "Lifting duration", 
+        "Продолжительность включения (ПВ)"
+    ],
+    "Hoist control system": [
+        "Hoist control system", 
+        "Система управления приводом"
+    ],
+    "Hoist group": [
+        "Hoist group", 
+        "Тип привода механизма подъёма"
+    ],
+    "Type of lifted load": [
+        "Type of lifted load", 
+        "Тип поднимаемого груза"
+    ],
+    "Result page": [
+        "Result page",
+        "Страница результатов"
+    ]
 }
