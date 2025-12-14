@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cdt_client/infrastructure/bc/sgoc_init.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/pages_switch_with_bottom_indication.dart';
 import 'package:cdt_client/presentation/core/widgets/pages_switch/page_config.dart';
-import 'package:hmi_core/hmi_core_translate.dart';
+import 'package:cdt_client/presentation/cargo_carier_selection_page/cargo_carier_selection_page.dart';
 ///
 /// [InitialPage] body widget.
 /// The form provides view / edit of [initial data](https://github.com/a-givertzman/cdt-math/blob/Docs-hoist-mechanism-Hoist/docs/input_output_data.md).
@@ -61,16 +61,10 @@ class _InitialBodyState extends State<InitialBody> {
         return false;
       },
       formsSubmission: () => 
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Data has saved'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('OK'.loc),
-              ),
-            ],
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => CargoCarierSelectionPage(),
+            settings: const RouteSettings(name: "/cargoCarierSelectionPage"),
           ),
         ),
     );
