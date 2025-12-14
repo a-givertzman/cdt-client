@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cdt_client/presentation/initial_page/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hmi_networking/hmi_networking.dart';
 import 'package:hmi_core/hmi_core.dart';
@@ -81,13 +82,13 @@ class MenuBody extends StatelessWidget {
                     MenuNavigationButton(
                       caption: const Localized('Initial page').v,
                       textStyle: textStyleScaled,
-                      // routeBuilder: () => MaterialPageRoute(
-                      //   builder: (context) => InitialPage(
-                      //     users: _users,
-                      //     //themeSwitch: _themeSwitch,
-                      //   ),
-                      //   settings: const RouteSettings(name: "/homePage"),
-                      // ),
+                      routeBuilder: () => MaterialPageRoute(
+                        builder: (context) => InitialPage(
+                          users: _users,
+                          //themeSwitch: _themeSwitch,
+                        ),
+                        settings: const RouteSettings(name: "/initialPage"),
+                      ),
                     ),
                   ],
                 ),

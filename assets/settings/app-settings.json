@@ -16,5 +16,8 @@
     "jds-connection-timeout": 3000,
 
     "comment": "db / stdout",
-    "report": "db"
+    "report": "db",
+
+    "ui-padding": 16.0,
+    "ui-paddingDouble": 32.0
 }
