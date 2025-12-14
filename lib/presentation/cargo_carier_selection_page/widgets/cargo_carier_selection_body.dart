@@ -16,7 +16,7 @@ class CargoCarierSelectionBody extends StatefulWidget {
   /// The body of the [CargoCarierSelectionPage] widget.
   /// Fields that are needed for cargo carier calculations after the initialization page. 
   /// 
-  /// [_fields] - temporary example of InitialPage content
+  /// [_fields] - temporary example of CargoCarierSelectionPage content
   CargoCarierSelectionBody({
     super.key,
   })  : _fields = SgocInit(sgocInit);
